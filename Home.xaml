@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAdmin"
         mc:Ignorable="d"
-        Title="NetworkBookClub" Height="660" Width="1024" Icon="/LogoWindow.png">
+        Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/LogoWindow.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

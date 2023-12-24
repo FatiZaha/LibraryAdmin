@@ -23,6 +23,7 @@ namespace LibraryAdmin
         public AddBook()
         {
             InitializeComponent();
+            WindowState = WindowState.Maximized;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

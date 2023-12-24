@@ -22,7 +22,7 @@ namespace LibraryAdmin
         public Home()
         {
             InitializeComponent();
-            
+            WindowState = WindowState.Maximized;
 
         }
 
