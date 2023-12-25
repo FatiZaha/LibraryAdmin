@@ -123,9 +123,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\logo3-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\LogoWindow.png" />
   </ItemGroup>
   <ItemGroup>
