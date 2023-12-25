@@ -1,0 +1,49 @@
+﻿<Window x:Class="LibraryAdmin.AddAuteur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAdmin"
+        mc:Ignorable="d"
+        Title="NetworkBookClub" Height="716" Width="1051" Icon="/LogoWindow.png">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="126" Margin="6,-12,0,0" VerticalAlignment="Top" Width="124" Source="/logo3-removebg-preview1.png"/>
+        <Button x:Name="backBtn" HorizontalAlignment="Left" Height="64" Margin="959,10,0,0" VerticalAlignment="Top" Width="47" Click="Button_Click" Background="Black">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/back_icon.png" Stretch="UniformToFill"/>
+            </Button.OpacityMask>
+        </Button>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Height="49" Margin="787,619,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="Ajouter_Auteur_1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Label Content="Nom" FontSize="20" Margin="30,138,884,501"/>
+        <Label Content="Prenom" FontSize="20" Margin="30,204,884,436"/>
+        <TextBox TextWrapping="Wrap" FontSize="20" Margin="197,203,41,438"/>
+        <Label Content="Biographie" FontSize="20" Margin="30,351,868,292"/>
+        <ScrollViewer Margin="197,353,60,98">
+            <RichTextBox Height="1034" Width="777" FontSize="20">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text=""/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </ScrollViewer>
+        <TextBox TextWrapping="Wrap" FontSize="20" Background="{x:Null}" Margin="197,138,41,502"/>
+        <Label Content="Image" FontSize="20" Margin="30,269,898,369"/>
+        <Button Click="SelectFileButton_Click" Background="Black" BorderBrush="{x:Null}" Margin="943,258,41,361">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/img_file.png" Stretch="Uniform"/>
+            </Button.OpacityMask>
+        </Button>
+        <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" Margin="197,268,108,369"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF28BE93"/>
+                <GradientStop Color="White" Offset="0.114"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+    </Grid>
+</Window>

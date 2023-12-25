@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddAuteur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddAuteur.xaml.cs">
+      <DependentUpon>AddAuteur.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
     </Compile>
@@ -138,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo3-removebg-preview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="add_auteur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,5 +54,16 @@ namespace LibraryAdmin
                 FilePathLabel.Content = selectedFilePath;
             }
         }
+
+        private void AddAuteurButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddAuteur addAuteur = new AddAuteur();
+            addAuteur.Show();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

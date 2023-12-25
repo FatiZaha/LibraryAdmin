@@ -16,27 +16,23 @@ using System.Windows.Shapes;
 namespace LibraryAdmin
 {
     /// <summary>
-    /// Logique d'interaction pour EditBook.xaml
+    /// Logique d'interaction pour AddAuteur.xaml
     /// </summary>
-    public partial class EditBook : Window
+    public partial class AddAuteur : Window
     {
-        public EditBook()
+        public AddAuteur()
         {
             InitializeComponent();
-            WindowState = WindowState.Maximized;
+            //WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Home home = new Home();
-            home.Show();
-            this.Close();
+            DragMove();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
-            home.Show();
             this.Close();
         }
 
@@ -53,15 +49,10 @@ namespace LibraryAdmin
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        
+        private void Ajouter_Auteur_1(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void AddAuteurButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddAuteur addAuteur = new AddAuteur();
-            addAuteur.Show();
+            this.Close();
         }
     }
 }
