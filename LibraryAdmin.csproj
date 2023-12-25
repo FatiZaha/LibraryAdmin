@@ -123,34 +123,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo3-removebg-preview.png" />
+    <Resource Include="images\logo3-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="LogoWindow.png" />
+    <Resource Include="images\LogoWindow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="back_icon.png" />
+    <Resource Include="images\back_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="edit.png" />
+    <Resource Include="images\edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="delete_icon.png" />
+    <Resource Include="images\delete_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="add_book.png" />
+    <Resource Include="images\add_book.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="search_icon.png" />
+    <Resource Include="images\search_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo3-removebg-preview1.png" />
+    <Resource Include="images\logo3-removebg-preview1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img_file.png" />
+    <Resource Include="images\img_file.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="add_auteur.png" />
+    <Resource Include="images\add_auteur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
