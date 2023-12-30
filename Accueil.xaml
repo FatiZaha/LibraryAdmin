@@ -1,0 +1,50 @@
+﻿<Window x:Class="LibraryAdmin.Accueil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAdmin"
+        mc:Ignorable="d"
+        Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/images/LogoWindow.png">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="126" Margin="4,-12,0,0" VerticalAlignment="Top" Width="124" Source="/images/logo3-removebg-preview1.png"/>
+        <Button x:Name="backBtn" HorizontalAlignment="Left" Height="64" Margin="1463,10,0,0" VerticalAlignment="Top" Width="47" Click="Button_Click" Background="Black" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
+            </Button.OpacityMask>
+        </Button>
+        <Button x:Name="pageEmployesBtn" HorizontalAlignment="Left" Height="254" Margin="183,268,0,0" VerticalAlignment="Top" Width="275" Click="pageEmployesBtn_Click" BorderThickness="5" Foreground="{x:Null}" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/images/employees_icon.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/images/employees_icon.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="pageLivresBtn" HorizontalAlignment="Center" Height="254" Margin="0,268,0,0" VerticalAlignment="Top" Width="276" Click="pageLivresBtn_Click" BorderThickness="5">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/livres_icon.png" Stretch="Fill"/>
+            </Button.Background>
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/images/livres_icon.png"/>
+            </Button.OpacityMask>
+        </Button>
+        <Label Content="Gestion des Employées" HorizontalAlignment="Left" Height="62" Margin="149,527,0,0" VerticalAlignment="Top" Width="343" FontSize="32"/>
+        <Label Content="Gestion des Livres" HorizontalAlignment="Center" Height="62" Margin="0,527,0,0" VerticalAlignment="Top" Width="268" FontSize="32"/>
+        <Button x:Name="pageAdherentsBtn" HorizontalAlignment="Left" Height="254" Margin="1113,268,0,0" VerticalAlignment="Top" Width="275" Click="pageAdherentsBtn_Click" BorderThickness="5" Foreground="{x:Null}" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/images/customer_icon.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/images/customer_icon.png"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Adhérents" HorizontalAlignment="Left" Height="62" Margin="1174,527,0,0" VerticalAlignment="Top" Width="154" FontSize="32"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF28BE93"/>
+                <GradientStop Color="White" Offset="0.114"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+    </Grid>
+</Window>

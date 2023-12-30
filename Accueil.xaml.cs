@@ -15,43 +15,43 @@ using System.Windows.Shapes;
 namespace LibraryAdmin
 {
     /// <summary>
-    /// Logique d'interaction pour Home.xaml
+    /// Logique d'interaction pour Accueil.xaml
     /// </summary>
-    public partial class Home : Window
+    public partial class Accueil : Window
     {
-        public Home()
+        public Accueil()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             var connexion = new MainWindow(); //create your new form.
-            
+
             connexion.Show(); //show the new form.
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void pageEmployesBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddBook addBook = new AddBook();
-            addBook.Show();
+            var employes = new Employes();
+            employes.Show();
             this.Close();
         }
 
-        private void Add_Book(object sender, RoutedEventArgs e)
+        private void pageLivresBtn_Click(object sender, RoutedEventArgs e)
         {
-            EditBook editBook = new EditBook();
-            editBook.Show();
+            var livres = new Livres();
+            livres.Show();
             this.Close();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void pageAdherentsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var adherents = new Adherents();
+            adherents.Show();
+            this.Close();
         }
     }
 }

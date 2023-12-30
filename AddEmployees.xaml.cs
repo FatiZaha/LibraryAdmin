@@ -16,30 +16,14 @@ using System.Windows.Shapes;
 namespace LibraryAdmin
 {
     /// <summary>
-    /// Logique d'interaction pour AddBook.xaml
+    /// Logique d'interaction pour AddEmployees.xaml
     /// </summary>
-    public partial class AddBook : Window
+    public partial class AddEmployees : Window
     {
-        public AddBook()
+        public AddEmployees()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Livres livres = new Livres();
-            livres.Show();
-            this.Close();
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            Livres livres = new Livres();
-            livres.Show();
-            this.Close();
         }
 
         private void SelectFileButton_Click(object sender, RoutedEventArgs e)
@@ -55,15 +39,25 @@ namespace LibraryAdmin
             }
         }
 
-        private void AddAuteurButton_Click(object sender, RoutedEventArgs e)
+        private void AddEmpBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddAuteur addAuteur = new AddAuteur();
-            addAuteur.Show();
+            Employes employes = new Employes();
+            employes.Show();
+            this.Close();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Employes employes = new Employes();
+            employes.Show();
+            this.Close();
+        }
 
+        private void AddEmpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Employes employes = new Employes();
+            employes.Show();
+            this.Close();
         }
     }
 }

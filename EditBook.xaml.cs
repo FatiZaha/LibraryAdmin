@@ -28,15 +28,15 @@ namespace LibraryAdmin
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
-            home.Show();
+            Livres livres = new Livres();
+            livres.Show();
             this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
-            home.Show();
+            Livres livres = new Livres();
+            livres.Show();
             this.Close();
         }
 

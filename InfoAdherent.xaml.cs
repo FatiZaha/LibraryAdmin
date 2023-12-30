@@ -10,35 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LibraryAdmin
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour InfoAdherent.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class InfoAdherent : Window
     {
-        public MainWindow()
+        public InfoAdherent()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            
-        }
-        
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var accueil = new Accueil(); //create your new form.
-            accueil.Show(); //show the new form.
-            this.Close();
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAdmin"
         mc:Ignorable="d"
-        Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/LogoWindow.png">
+        Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/images/LogoWindow.png">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="126" Margin="6,-12,0,0" VerticalAlignment="Top" Width="124" Source="/logo3-removebg-preview1.png"/>
+        <Image HorizontalAlignment="Left" Height="126" Margin="6,-12,0,0" VerticalAlignment="Top" Width="124" Source="/images/logo3-removebg-preview1.png"/>
         <Button x:Name="backBtn" HorizontalAlignment="Left" Height="64" Margin="1463,10,0,0" VerticalAlignment="Top" Width="47" Click="Button_Click" Background="Black">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/back_icon.png" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
         <Button Content="Modifier" HorizontalAlignment="Left" Height="49" Margin="1236,731,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="Button_Click_1">
@@ -47,7 +47,7 @@
                 <TextBox Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" Canvas.Left="259" Canvas.Top="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Button Height="38" Canvas.Left="1409" Canvas.Top="68" Width="40" Click="SelectFileButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}">
                     <Button.OpacityMask>
-                        <ImageBrush ImageSource="/img_file.png" Stretch="UniformToFill"/>
+                        <ImageBrush ImageSource="/images/img_file.png" Stretch="UniformToFill"/>
                     </Button.OpacityMask>
                 </Button>
                 <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" Height="36" Canvas.Left="259" Canvas.Top="69" Width="1150" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -55,7 +55,7 @@
                 <ComboBox Height="34" Canvas.Left="259" Canvas.Top="175" Width="1184" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Button Height="48" Canvas.Left="1409" Canvas.Top="114" Width="47" Click="AddAuteurButton_Click" Background="Black" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button.OpacityMask>
-                        <ImageBrush ImageSource="/add_auteur.png" Stretch="UniformToFill"/>
+                        <ImageBrush ImageSource="/images/add_auteur.png" Stretch="UniformToFill"/>
                     </Button.OpacityMask>
                 </Button>
             </Canvas>

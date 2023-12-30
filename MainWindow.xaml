@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryAdmin"
         mc:Ignorable="d"
-        Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/LogoWindow.png">
+        Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/images/LogoWindow.png">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,7 +13,7 @@
                 <GradientStop Color="White" Offset="0.114"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="126" Margin="6,-12,0,0" VerticalAlignment="Top" Width="124" Source="/logo3-removebg-preview1.png"/>
+        <Image HorizontalAlignment="Left" Height="126" Margin="6,-12,0,0" VerticalAlignment="Top" Width="124" Source="/images/logo3-removebg-preview1.png"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="419,375,0,0" VerticalAlignment="Top" Height="50" Width="86" FontSize="24"/>
         <TextBox HorizontalAlignment="Left" Height="42" Margin="616,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" FontSize="22"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="419,483,0,0" VerticalAlignment="Top" Height="50" Width="137" FontSize="24"/>

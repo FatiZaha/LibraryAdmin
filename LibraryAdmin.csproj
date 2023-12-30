@@ -33,10 +33,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -46,15 +49,21 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Accueil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddAuteur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -63,11 +72,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adherents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Home.xaml">
+    <Page Include="EditEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Employes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InfoAdherent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Livres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,11 +104,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Accueil.xaml.cs">
+      <DependentUpon>Accueil.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddAuteur.xaml.cs">
       <DependentUpon>AddAuteur.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEmployees.xaml.cs">
+      <DependentUpon>AddEmployees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adherents.xaml.cs">
+      <DependentUpon>Adherents.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -88,8 +126,17 @@
     <Compile Include="EditBook.xaml.cs">
       <DependentUpon>EditBook.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
+    <Compile Include="EditEmployees.xaml.cs">
+      <DependentUpon>EditEmployees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Employes.xaml.cs">
+      <DependentUpon>Employes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfoAdherent.xaml.cs">
+      <DependentUpon>InfoAdherent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Livres.xaml.cs">
+      <DependentUpon>Livres.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -148,6 +195,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\add_auteur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\employees_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\livres_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\customer_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\personal-information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\export_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\import_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
