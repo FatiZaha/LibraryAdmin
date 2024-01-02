@@ -18,27 +18,31 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Label Content="Nom" FontSize="20" Margin="30,138,884,501"/>
-        <Label Content="Prenom" FontSize="20" Margin="30,204,884,436"/>
-        <TextBox TextWrapping="Wrap" FontSize="20" Margin="197,203,41,438"/>
-        <Label Content="Biographie" FontSize="20" Margin="30,351,868,292"/>
-        <ScrollViewer Margin="197,353,60,98">
-            <RichTextBox Height="1034" Width="777" FontSize="20">
+        <Label Content="Nom" HorizontalAlignment="Left" Height="43" Margin="94,172,0,0" VerticalAlignment="Top" Width="112" FontSize="22"/>
+        <Label Content="Prénom" HorizontalAlignment="Left" Height="43" Margin="94,224,0,0" VerticalAlignment="Top" Width="112" FontSize="22"/>
+        <Label Content="Image" HorizontalAlignment="Left" Height="43" Margin="94,278,0,0" VerticalAlignment="Top" Width="112" FontSize="22"/>
+        <Label Content="Date de naissance" HorizontalAlignment="Left" Height="43" Margin="94,333,0,0" VerticalAlignment="Top" Width="190" FontSize="22"/>
+        <Label Content="Date de décès" HorizontalAlignment="Left" Height="43" Margin="94,391,0,0" VerticalAlignment="Top" Width="152" FontSize="22"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="132" Margin="284,449,0,0" VerticalAlignment="Top" Width="680">
+            <RichTextBox Height="373" Width="660" FontSize="20">
                 <FlowDocument>
                     <Paragraph>
-                        <Run Text=""/>
+                        <Run/>
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
         </ScrollViewer>
-        <TextBox TextWrapping="Wrap" FontSize="20" Background="{x:Null}" Margin="197,138,41,502"/>
-        <Label Content="Image" FontSize="20" Margin="30,269,898,369"/>
-        <Button Click="SelectFileButton_Click" Background="Black" BorderBrush="{x:Null}" Margin="943,258,41,361">
+        <Label Content="Biographie" HorizontalAlignment="Left" Height="43" Margin="94,449,0,0" VerticalAlignment="Top" Width="152" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="40" Margin="284,394,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="666" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="40" Margin="284,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="666" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="40" Margin="284,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="666" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="40" Margin="284,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="666" FontSize="22"/>
+        <Label x:Name="FilePathLabel" Content="Séléctioner une image" HorizontalAlignment="Left" Height="43" Margin="284,280,0,0" VerticalAlignment="Top" Width="614" FontSize="20" BorderBrush="#FFABADB3" BorderThickness="1" Background="{x:Null}"/>
+        <Button Click="SelectFileButton_Click" HorizontalAlignment="Left" Height="52" Margin="898,276,0,0" VerticalAlignment="Top" Width="52" Background="Black" BorderBrush="{x:Null}">
             <Button.OpacityMask>
-                <ImageBrush ImageSource="/images/img_file.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/images/img_file.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" Margin="197,268,108,369"/>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF28BE93"/>

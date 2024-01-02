@@ -32,6 +32,12 @@ namespace LibraryAdmin
             this.Close();
         }
 
-        
+        private void InfoAdherent_Clik(object sender, RoutedEventArgs e)
+        {
+            var infoAdherent = new InfoAdherent();
+            infoAdherent.Show();
+            this.Close();
+
+        }
     }
 }

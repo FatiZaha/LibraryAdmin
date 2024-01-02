@@ -46,7 +46,7 @@
                             </TransformGroup>
                         </CheckBox.RenderTransform>
                     </CheckBox>
-                    <Button Height="82" Canvas.Left="1262" Canvas.Top="24" Width="83" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Black" BorderBrush="{x:Null}">
+                    <Button Height="82" Canvas.Left="1260" Canvas.Top="24" Width="83" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}" Click="InfoAdherent_Clik">
                         <Button.OpacityMask>
                             <ImageBrush ImageSource="/images/personal-information.png"/>
                         </Button.OpacityMask>
@@ -64,7 +64,7 @@
                 <ImageBrush ImageSource="/images/export_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <CheckBox HorizontalAlignment="Left" Height="16" Margin="1433,223,0,0" VerticalAlignment="Top" Width="16">
+        <CheckBox HorizontalAlignment="Left" Height="16" Margin="1429,225,0,0" VerticalAlignment="Top" Width="16">
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="3" ScaleY="3"/>

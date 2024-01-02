@@ -24,5 +24,12 @@ namespace LibraryAdmin
             InitializeComponent();
             WindowState = WindowState.Maximized;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var adherents = new Adherents();
+            adherents.Show();
+            this.Close();
+        }
     }
 }
