@@ -24,9 +24,19 @@ namespace LibraryAdmin.LCollections
             {
                 Employee employee = new Employee(nom, prenom, adresse, email, phone, image, dateNaissance);
                 context.Employees.Add(employee);
+                context.SaveChanges();
                 return true;
             }
             return false;
+        }
+
+        public void RemoveEmployee(int id)
+        {
+            var emp = from e in context.Employees
+                      where e.Id == id
+                      select e;
+            context.Employees.Remove((Employee)emp);
+            context.SaveChanges();
         }
 
         public HashSet<Employee> RechercheEmployees(string name)

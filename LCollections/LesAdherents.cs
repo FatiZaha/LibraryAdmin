@@ -24,6 +24,7 @@ namespace LibraryAdmin.LCollections
             {
                 Adherent adherent = new Adherent(nom, prenom, adresse, email, phone, image, dateNaissance, login, password);
                 context.Adherents.Add(adherent);
+                context.SaveChanges();
                 return true;
             }
             else

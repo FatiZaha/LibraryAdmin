@@ -17,16 +17,22 @@ namespace LibraryAdmin.LCollections
             this.context = context;
         }
 
-        public bool Ajouter_Auteur(string nom, string prenom, string image, DateTime dateNaissance, DateTime dateDeces, string biographie)
+        public bool Ajouter_Auteur(string nom, string prenom, string image, string biographie, DateTime dateNaissance, DateTime dateDeces)
         {
             var exist = context.Auteurs.Any(a => a.Nom == nom && a.Prenom == prenom);
             if (!exist)
             {
                 Auteur auteur = new Auteur(nom, prenom, image, dateNaissance, dateDeces, biographie);
                 context.Auteurs.Add(auteur);
+                context.SaveChanges();
                 return true;
             }
             return false;
+        }
+
+        public HashSet<Auteur> GetAuteurs()
+        {
+            return context.Auteurs.ToHashSet();
         }
     }
 }

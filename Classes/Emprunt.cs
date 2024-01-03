@@ -29,7 +29,7 @@ namespace LibraryAdmin.Classes
 
         public DateTime Date_empr { get => date_empr; set { date_empr = value; this.Montant = this.CalculeMontant(); } }
         public DateTime Date_retour { get => date_retour; set { date_retour = value; this.Montant = this.CalculeMontant(); } }
-        
+        public bool EtatRetour { get; set; }
 
         public float CalculeMontant()
         {
