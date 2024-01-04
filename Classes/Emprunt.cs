@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAdmin.Classes
 {
-    internal class Emprunt
+    public class Emprunt
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -38,6 +38,8 @@ namespace LibraryAdmin.Classes
             m=Livre.Prix*joursEmprunt;
             return m;
         }
+
+        public Emprunt() { }
 
         public Emprunt(Livre livre, Adherent adherent, DateTime date_empr, DateTime date_retour)
         {

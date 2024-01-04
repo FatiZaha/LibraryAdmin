@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAdmin.Classes
 {
-    internal class Auteur
+    public class Auteur
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

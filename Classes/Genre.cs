@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAdmin.Classes
 {
-    enum Genre
+    public enum Genre
     {
         [Display(Name = "Roman")]
         Roman,

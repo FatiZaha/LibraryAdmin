@@ -44,5 +44,10 @@ namespace LibraryAdmin.LCollections
             var employees = context.Employees.Where(emp => emp.Prenom == name || emp.Nom == name).ToHashSet();
             return employees;
         }
+
+        public HashSet<Employee> GetEmployees()
+        {
+            return context.Employees.ToHashSet();
+        }
     }
 }

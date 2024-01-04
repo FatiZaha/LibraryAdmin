@@ -25,20 +25,12 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Employees",
+                "dbo.Admins",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nom = c.String(),
-                        Prenom = c.String(),
-                        Adresse = c.String(),
-                        Email = c.String(),
-                        Phone = c.String(),
-                        Image = c.String(),
-                        DateNaissance = c.DateTime(nullable: false),
                         Login = c.String(),
                         Password = c.String(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -57,6 +49,21 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Employees",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nom = c.String(),
+                        Prenom = c.String(),
+                        Adresse = c.String(),
+                        Email = c.String(),
+                        Phone = c.String(),
+                        Image = c.String(),
+                        DateNaissance = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Emprunts",
                 c => new
                     {
@@ -66,6 +73,7 @@
                         Montant = c.Single(nullable: false),
                         Date_empr = c.DateTime(nullable: false),
                         Date_retour = c.DateTime(nullable: false),
+                        EtatRetour = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Adherents", t => t.AdherentId, cascadeDelete: true)
@@ -123,8 +131,9 @@
             DropTable("dbo.Paniers");
             DropTable("dbo.Livres");
             DropTable("dbo.Emprunts");
-            DropTable("dbo.Auteurs");
             DropTable("dbo.Employees");
+            DropTable("dbo.Auteurs");
+            DropTable("dbo.Admins");
             DropTable("dbo.Adherents");
         }
     }

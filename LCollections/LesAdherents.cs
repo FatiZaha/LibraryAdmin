@@ -43,5 +43,10 @@ namespace LibraryAdmin.LCollections
             var adherents = context.Adherents.Where(a => a.Prenom == name || a.Nom == name).ToHashSet();
             return adherents;
         }
+
+        public HashSet<Adherent> GetAdherents()
+        {
+            return context.Adherents.ToHashSet();
+        }
     }
 }

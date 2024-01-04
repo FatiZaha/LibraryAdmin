@@ -19,7 +19,7 @@ namespace LibraryAdmin.DAO
         public DbSet<Emprunt> Emprunts { get; set;}
 
 
-        public LibraryContext() : base("LibraryContext")
+        public LibraryContext() : base("librarydbo")
         {
         }
     }

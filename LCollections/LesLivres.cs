@@ -71,6 +71,12 @@ namespace LibraryAdmin.LCollections
             var livres = context.Livres.Where(l => l.Titre == titre).ToHashSet();
             return livres;
         }
+
+        public HashSet<Livre> GetLivres()
+        {
+            
+            return context.Livres.ToHashSet();
+        }
     }
 }
 

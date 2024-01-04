@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace LibraryAdmin.Classes
 {
-    internal class Livre
+    public class Livre
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,7 +32,7 @@ namespace LibraryAdmin.Classes
         [Display(Name ="Genre")]
         public Genre Genre { get; set; }
 
-
+        public Livre() { }
 
         public Livre(string titre,Auteur auteur,Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
         {

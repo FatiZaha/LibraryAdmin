@@ -10,7 +10,7 @@ using System.Security.Policy;
 
 namespace LibraryAdmin.Classes
 {
-    internal class Adherent
+    public class Adherent
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAdmin.Classes
 {
-    internal class Panier
+    public class Panier
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +24,7 @@ namespace LibraryAdmin.Classes
         public Adherent Adherent { get; set; }
         public int AdherentId { get; set; }
 
+        public Panier() { }
         public Panier(Livre livre,Adherent adherent)
         {
             Livre = livre;
