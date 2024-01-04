@@ -17,12 +17,12 @@ namespace LibraryAdmin.LCollections
             this.context = context;
         }
 
-        public bool Ajouter_Emp(string nom, string prenom, string adresse, string email, string phone, string image, DateTime dateNaissance)
+        public bool Ajouter_Emp(string nom, string prenom,string status, string adresse, string email, string phone, string image, DateTime dateNaissance)
         {
             var exist = context.Employees.Any(emp => emp.DateNaissance == dateNaissance && emp.Prenom == prenom && emp.Nom == nom);
             if (!exist)
             {
-                Employee employee = new Employee(nom, prenom, adresse, email, phone, image, dateNaissance);
+                Employee employee = new Employee(nom, prenom,status, adresse, email, phone, image, dateNaissance);
                 context.Employees.Add(employee);
                 context.SaveChanges();
                 return true;
@@ -41,13 +41,19 @@ namespace LibraryAdmin.LCollections
 
         public HashSet<Employee> RechercheEmployees(string name)
         {
-            var employees = context.Employees.Where(emp => emp.Prenom == name || emp.Nom == name).ToHashSet();
+            var employees = context.Employees.Where(emp => emp.Prenom.Contains(name)  || emp.Nom.Contains(name)).ToHashSet();
             return employees;
         }
 
         public HashSet<Employee> GetEmployees()
         {
             return context.Employees.ToHashSet();
+        }
+
+        public Employee GetUnEmployee(int id)
+        {
+            var employee = context.Employees.FirstOrDefault(e => e.Id == id);
+            return employee;
         }
     }
 }

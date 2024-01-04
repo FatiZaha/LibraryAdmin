@@ -173,6 +173,14 @@
     <Compile Include="Migrations\202401032256030_InitialCreate.designer.cs">
       <DependentUpon>202401032256030_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401041128414_initiacreate.cs" />
+    <Compile Include="Migrations\202401041128414_initiacreate.designer.cs">
+      <DependentUpon>202401041128414_initiacreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401042242189_initiacreate1.cs" />
+    <Compile Include="Migrations\202401042242189_initiacreate1.designer.cs">
+      <DependentUpon>202401042242189_initiacreate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -189,6 +197,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202401032256030_InitialCreate.resx">
       <DependentUpon>202401032256030_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401041128414_initiacreate.resx">
+      <DependentUpon>202401041128414_initiacreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401042242189_initiacreate1.resx">
+      <DependentUpon>202401042242189_initiacreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

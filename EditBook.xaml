@@ -23,41 +23,51 @@
                 <Label Content="Image" Height="38" Width="66" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="69" VerticalAlignment="Top"/>
                 <Label Content="Auteur" Height="34" Width="83" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="120" VerticalAlignment="Top"/>
                 <Label Content="Genre" Height="34" Width="83" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="175" VerticalAlignment="Top"/>
-                <Label Content="Edition" Height="34" Width="83" FontSize="20" RenderTransformOrigin="1.075,0.621" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="283" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" HorizontalAlignment="Left" Canvas.Left="259" Canvas.Top="283" VerticalAlignment="Center"/>
-                <Label Content="Nombre des exemplaires" Height="45" Width="236" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="337" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" HorizontalAlignment="Left" Canvas.Left="259" Canvas.Top="341" VerticalAlignment="Center"/>
-                <Label Content="Prix" Height="34" Width="68" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="454" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" HorizontalAlignment="Left" Canvas.Left="259" Canvas.Top="453" VerticalAlignment="Center"/>
+                <Label Content="Nombre des exemplaires" Height="45" Width="236" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="289" VerticalAlignment="Top"/>
+                <TextBox x:Name="nbrExmpl" Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="293" VerticalAlignment="Top"/>
+                <Label Content="Prix" Height="34" Width="68" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="411" VerticalAlignment="Top"/>
+                <TextBox x:Name="prix" Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="410" VerticalAlignment="Top"/>
                 <Label Content="Date de parution" Height="34" Width="165" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="231" VerticalAlignment="Top"/>
-                <Label Content="Description" Height="34" Width="165" FontSize="20" Canvas.Left="16" Canvas.Top="524" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <ScrollViewer Height="248" Canvas.Left="259" Canvas.Top="530" Width="1184" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Label Content="Description" Height="34" Width="165" FontSize="20" Canvas.Left="16" Canvas.Top="460" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <ScrollViewer Height="248" Canvas.Left="259" Canvas.Top="466" Width="1184" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <RichTextBox Height="1034" Width="1167" FontSize="20">
                         <FlowDocument>
                             <Paragraph>
-                                <Run Text=""/>
+                                <Run x:Name="description" Text=""/>
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
                 </ScrollViewer>
-                <Label Content="Nombre des emprunts" Height="45" Width="236" FontSize="20" Canvas.Left="16" Canvas.Top="395" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" Canvas.Left="259" Canvas.Top="399" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <DatePicker Height="38" Canvas.Left="259" Canvas.Top="228" Width="1184" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label Content="Nombre des emprunts" Height="45" Width="236" FontSize="20" Canvas.Left="16" Canvas.Top="348" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBox x:Name="nbrEmpr" Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" Canvas.Left="259" Canvas.Top="352" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <DatePicker Name="dateParution" Height="38" Canvas.Left="259" Canvas.Top="228" Width="1184" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Label Content="Titre" Height="34" Width="66" FontSize="20" Canvas.Left="16" Canvas.Top="18" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" Canvas.Left="259" Canvas.Top="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="titre" Height="34" TextWrapping="Wrap" Width="1184" FontSize="20" Canvas.Left="259" Canvas.Top="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Button Height="38" Canvas.Left="1409" Canvas.Top="68" Width="40" Click="SelectFileButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}">
                     <Button.OpacityMask>
                         <ImageBrush ImageSource="/images/img_file.png" Stretch="UniformToFill"/>
                     </Button.OpacityMask>
                 </Button>
-                <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" Height="36" Canvas.Left="259" Canvas.Top="69" Width="1150" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <ComboBox Height="35" Canvas.Left="259" Canvas.Top="120" Width="1150" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="ComboBox_SelectionChanged"/>
-                <ComboBox Height="34" Canvas.Left="259" Canvas.Top="175" Width="1184" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label x:Name="FilePathLabel" Height="36" Canvas.Left="259" Canvas.Top="69" Width="1150" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <ComboBox x:Name="auteur" ItemsSource="{Binding auteurs}" SelectedValuePath="Id" Height="35" Canvas.Left="689" Canvas.Top="120" Width="705" HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" FontSize="18">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock >
+                                <Run Text="{Binding Prenom}" />
+                                
+                                <Run Text="{Binding Nom}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="genre" ItemsSource="{Binding genres}" Height="34" Canvas.Left="689" Canvas.Top="175" Width="754" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Background="{x:Null}"/>
                 <Button Height="48" Canvas.Left="1409" Canvas.Top="114" Width="47" Click="AddAuteurButton_Click" Background="Black" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button.OpacityMask>
                         <ImageBrush ImageSource="/images/add_auteur.png" Stretch="UniformToFill"/>
                     </Button.OpacityMask>
                 </Button>
+                <TextBlock x:Name="auteurLivre" Height="34" Canvas.Left="259" TextWrapping="Wrap" Canvas.Top="120" Width="397" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFDEF5EE"/>
+                <TextBlock x:Name="genreLivre" Height="34" Canvas.Left="259" TextWrapping="Wrap" Canvas.Top="175" Width="397" FontSize="18" Background="#FFDEF5EE" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             </Canvas>
         </ScrollViewer>
 

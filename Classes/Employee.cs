@@ -17,6 +17,7 @@ namespace LibraryAdmin.Classes
 
         public string Nom { get; set; }
         public string Prenom { get; set; }
+        public string Status { get; set; }
         public string Adresse { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -27,10 +28,11 @@ namespace LibraryAdmin.Classes
         {
         }
 
-        public Employee(string nom, string prenom, string adresse, string email, string phone, string image, DateTime dateNaissance)
+        public Employee(string nom, string prenom,string status, string adresse, string email, string phone, string image, DateTime dateNaissance)
         {
             Nom = nom;
             Prenom = prenom;
+            Status = status;
             Adresse = adresse;
             Email = email;
             Phone = phone;

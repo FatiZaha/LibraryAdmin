@@ -1,4 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using LibraryAdmin.Classes;
+using LibraryAdmin.DAO;
+using LibraryAdmin.LCollections;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +23,35 @@ namespace LibraryAdmin
     /// </summary>
     public partial class EditEmployees : Window
     {
-        public EditEmployees()
+        LibraryContext context = new LibraryContext();
+        int idEmployee;
+        public Employee employee;
+        private LesEmployees lesEmployees;
+
+
+        public EditEmployees(int id)
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
+
+            this.idEmployee = id;
+            lesEmployees = new LesEmployees(context);
+            this.employee = lesEmployees.GetUnEmployee(idEmployee);
+
+            AfficherInfoEmployee();
+            DataContext = this;
+        }
+
+        private void AfficherInfoEmployee()
+        {
+            nom.Text = employee.Nom.ToString();
+            prenom.Text = employee.Prenom.ToString();
+            status.Text = employee.Status.ToString();
+            FilePathLabel.Content = employee.Image.ToString();
+            dateNaissance.Text = employee.DateNaissance.ToString();
+            email.Text = employee.Email.ToString();
+            adresse.Text = employee.Adresse.ToString();
+            phone.Text = employee.Phone.ToString();
         }
 
         private void SelectFileButton_Click(object sender, RoutedEventArgs e)

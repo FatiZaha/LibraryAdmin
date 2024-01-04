@@ -18,25 +18,27 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Label Content="Nom" HorizontalAlignment="Left" Margin="190,159,0,0" VerticalAlignment="Top" Height="46" Width="84" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="412,162,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
-        <Label Content="Prénom" HorizontalAlignment="Left" Margin="190,231,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="412,234,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
-        <Label Content="Image" HorizontalAlignment="Left" Margin="190,307,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="190,467,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="412,470,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
-        <Label Content="Adresse" HorizontalAlignment="Left" Margin="190,543,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="412,546,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
-        <Label Content="Téléphone" HorizontalAlignment="Left" Margin="190,624,0,0" VerticalAlignment="Top" Height="46" Width="121" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="412,627,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
-        <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" HorizontalAlignment="Left" Height="45" Margin="412,308,0,0" VerticalAlignment="Top" Width="910" FontSize="18" BorderBrush="#FFABADB3" BorderThickness="1"/>
-        <Button Click="SelectFileButton_Click" HorizontalAlignment="Left" Height="45" Margin="1322,308,0,0" VerticalAlignment="Top" Width="48" BorderBrush="{x:Null}" Background="Black">
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="190,135,0,0" VerticalAlignment="Top" Height="46" Width="84" FontSize="24"/>
+        <TextBox x:Name="nom" HorizontalAlignment="Left" Height="40" Margin="412,138,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
+        <Label Content="Prénom" HorizontalAlignment="Left" Margin="190,203,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
+        <TextBox x:Name="prenom" HorizontalAlignment="Left" Height="40" Margin="412,206,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
+        <Label Content="Image" HorizontalAlignment="Left" Margin="190,341,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="190,501,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Height="40" Margin="412,504,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
+        <Label Content="Adresse" HorizontalAlignment="Left" Margin="190,577,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
+        <TextBox x:Name="adresse" HorizontalAlignment="Left" Height="40" Margin="412,580,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
+        <Label Content="Téléphone" HorizontalAlignment="Left" Margin="190,658,0,0" VerticalAlignment="Top" Height="46" Width="121" FontSize="24"/>
+        <TextBox x:Name="phone" HorizontalAlignment="Left" Height="40" Margin="412,661,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
+        <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" HorizontalAlignment="Left" Height="45" Margin="412,342,0,0" VerticalAlignment="Top" Width="910" FontSize="18" BorderBrush="#FFABADB3" BorderThickness="1"/>
+        <Button Click="SelectFileButton_Click" HorizontalAlignment="Left" Height="45" Margin="1322,342,0,0" VerticalAlignment="Top" Width="48" BorderBrush="{x:Null}" Background="Black">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/images/img_file.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Margin="412,392,0,0" Width="958" FontSize="22"/>
-        <Label Content="Date de naissance" VerticalAlignment="Top" HorizontalAlignment="Left" Height="43" Margin="190,392,0,0" Width="202" FontSize="24"/>
+        <DatePicker Name="dateNaissance" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Margin="412,426,0,0" Width="958" FontSize="22"/>
+        <Label Content="Date de naissance" VerticalAlignment="Top" HorizontalAlignment="Left" Height="43" Margin="190,426,0,0" Width="202" FontSize="24"/>
+        <Label Content="Statut" HorizontalAlignment="Left" Margin="190,273,0,0" VerticalAlignment="Top" Height="46" Width="94" FontSize="24"/>
+        <TextBox x:Name="status" HorizontalAlignment="Left" Height="40" Margin="412,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="958" FontSize="22"/>
 
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
