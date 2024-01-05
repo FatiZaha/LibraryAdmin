@@ -8,18 +8,20 @@
         Title="NetworkBookClub" Height="830.4" Width="1550.4" Icon="/images/LogoWindow.png">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF28BE93"/>
-                <GradientStop Color="White" Offset="0.114"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/images/estante-de-luxo-em-sala-de-estar-antiquada-gerada-por-ia.jpg"/>
         </Grid.Background>
+        <Rectangle HorizontalAlignment="Left" Height="124" Margin="0,-12,0,0" Stroke="Black" VerticalAlignment="Top" Width="135">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFFEE3C8" Opacity="0.6"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Image HorizontalAlignment="Left" Height="126" Margin="6,-12,0,0" VerticalAlignment="Top" Width="124" Source="/images/logo3-removebg-preview1.png"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="419,375,0,0" VerticalAlignment="Top" Height="50" Width="86" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="42" Margin="616,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" FontSize="22"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="419,483,0,0" VerticalAlignment="Top" Height="50" Width="137" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Height="42" Margin="616,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" FontSize="22"/>
-        <Label Content="Welcome" HorizontalAlignment="Left" Height="75" Margin="181,207,0,0" VerticalAlignment="Top" Width="222" FontSize="40" FontWeight="Bold" Foreground="#FF39484C"/>
-        <Button Content="Connect" HorizontalAlignment="Left" Height="49" Margin="1145,670,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="Button_Click">
+        <Label Content="Login" HorizontalAlignment="Left" Margin="419,375,0,0" VerticalAlignment="Top" Height="50" Width="86" FontSize="24" Foreground="#FFEEF6F4" FontWeight="Bold"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Height="42" Margin="616,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" FontSize="22" BorderBrush="#FF935E45" BorderThickness="2" Background="#FFFEE3C8" SelectionBrush="#FF935E45"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="419,483,0,0" VerticalAlignment="Top" Height="50" Width="137" FontSize="24" Foreground="#FFEEF6F4" FontWeight="Bold"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="42" Margin="616,488,0,0" VerticalAlignment="Top" Width="515" FontSize="22" BorderBrush="#FF935E45" BorderThickness="2" Background="#FFFEE3C8" SelectionBrush="#FF935E45"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" Height="111" Margin="181,207,0,0" VerticalAlignment="Top" Width="352" FontSize="72" FontWeight="Bold" Foreground="#FFDAF4EC"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Height="49" Margin="1145,670,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="Connecting">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

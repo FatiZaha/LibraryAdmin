@@ -17,7 +17,13 @@ namespace LibraryAdmin.Classes
 
         public string Nom { get; set; }
         public string Prenom { get; set; }
-        public string Status { get; set; }
+<<<<<<< HEAD
+
+        [Display(Name = "Status")]
+        public Status Status { get; set; }
+
+=======
+>>>>>>> parent of 5fd6eba (edit)
         public string Adresse { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -28,11 +34,14 @@ namespace LibraryAdmin.Classes
         {
         }
 
-        public Employee(string nom, string prenom,string status, string adresse, string email, string phone, string image, DateTime dateNaissance)
+<<<<<<< HEAD
+        public Employee(string nom, string prenom, Status status, string adresse, string email, string phone, string image, DateTime dateNaissance)
+=======
+        public Employee(string nom, string prenom, string adresse, string email, string phone, string image, DateTime dateNaissance)
+>>>>>>> parent of 5fd6eba (edit)
         {
             Nom = nom;
             Prenom = prenom;
-            Status = status;
             Adresse = adresse;
             Email = email;
             Phone = phone;

@@ -1,4 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using LibraryAdmin.Classes;
+using LibraryAdmin.DAO;
+using LibraryAdmin.LCollections;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +23,16 @@ namespace LibraryAdmin
     /// </summary>
     public partial class AddEmployees : Window
     {
+        LibraryContext context = new LibraryContext();
+        private LesEmployees lesEmployees;
+        public List<Status> statuses { get; set; } = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
+
+
         public AddEmployees()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
+            DataContext = this;
         }
 
         private void SelectFileButton_Click(object sender, RoutedEventArgs e)

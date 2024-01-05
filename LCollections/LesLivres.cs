@@ -17,12 +17,12 @@ namespace LibraryAdmin.LCollections
             this.context = context;
         }
 
-        public bool Ajouter_lv(string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
+        public bool Ajouter_lv(string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl,string image, float prix)
         {
             var exist = context.Livres.Any(l => l.Titre == titre && l.AuteurId == auteur.Id);
             if (!exist)
             {
-                Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl, nbrEmpr, image, prix);
+                Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl,image, prix);
                 context.Livres.Add(livre);
                 context.SaveChanges();
                 return true;
@@ -54,31 +54,21 @@ namespace LibraryAdmin.LCollections
             context.SaveChanges();
         }
 
-        public Livre GetUnLivre(int id)
+        public HashSet<Livre> RechercheLivre_Genre(Genre genre)
         {
-            var livre = context.Livres.FirstOrDefault(l => l.Id == id);
-            return livre;
+            var livres = context.Livres.Where(l => l.Genre == genre).ToHashSet();
+            return livres;
         }
-            /**
-            public HashSet<Livre> RechercheLivre_Genre(string genre)
-            {
-                var livres = context.Livres.Where(l => l.Genre.ToString().ToLower() == genre.ToLower()).ToHashSet();
-                return livres;
-            }
 
-            public HashSet<Livre> RechercheLivre_Auteur(string auteur)
-            {
-                var livres = context.Livres.Where(l => l.Auteur.Nom.ToLower() == auteur.ToLower() || l.Auteur.Prenom.ToLower() == auteur.ToLower()).ToHashSet();
-                return livres;
-            }**/
-
-            public HashSet<Livre> RechercheLivre(string search)
+        public HashSet<Livre> RechercheLivre_Auteur(Auteur auteur)
         {
-            var livres = context.Livres.Where(l => 
-                                                l.Titre.ToLower().Contains(search.ToLower()) ||
-                                                l.Genre.ToString().ToLower().Contains(search.ToLower()) ||
-                                                l.Auteur.Nom.ToLower().Contains(search.ToLower()) ||
-                                                l.Auteur.Prenom.ToLower().Contains(search.ToLower())).ToHashSet();
+            var livres = context.Livres.Where(l => l.AuteurId == auteur.Id).ToHashSet();
+            return livres;
+        }
+
+        public HashSet<Livre> RechercheLivre_Titre(string titre)
+        {
+            var livres = context.Livres.Where(l => l.Titre == titre).ToHashSet();
             return livres;
         }
 

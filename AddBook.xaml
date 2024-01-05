@@ -13,7 +13,7 @@
                 <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <Button Content="Ajouter" HorizontalAlignment="Left" Height="49" Margin="1191,733,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="Button_Click_1">
+        <Button Content="Ajouter" HorizontalAlignment="Left" Height="49" Margin="1191,733,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="AjouterLivre">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -23,13 +23,22 @@
                 <Label Content="Titre" Height="34" Width="66" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="21" VerticalAlignment="Top"/>
                 <Label Content="Auteur" Height="34" Width="83" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="124" VerticalAlignment="Top"/>
                 <Label Content="Genre" Height="34" Width="83" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="179" VerticalAlignment="Top"/>
+
                 <Label Content="Nombre des exemplaires" Height="45" Width="236" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="289" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="292" VerticalAlignment="Top"/>
-                <Label Content="Prix" Height="34" Width="97" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="349" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="349" VerticalAlignment="Top"/>
+                <TextBox PreviewTextInput="NumberValidationTextBox" 
+                         Text="{Binding NumericValue, UpdateSourceTrigger=PropertyChanged}"
+                         x:Name="nbrExmpl" Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="292" VerticalAlignment="Top"/>
+                <TextBox PreviewTextInput="NumberValidationTextBox" 
+                         Text="{Binding NumericValue, UpdateSourceTrigger=PropertyChanged}"
+                         x:Name="prix" Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="349" VerticalAlignment="Top"/>
+
+                <Label Content="Nombre des exemplaires" Height="45" Width="236" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="341" VerticalAlignment="Top"/>
+                <Label Content="Prix" Height="34" Width="68" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="406" VerticalAlignment="Top"/>
+                <TextBox Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Left" Canvas.Left="259" Canvas.Top="405" VerticalAlignment="Center"/>
+
                 <Label Content="Date de parution" Height="34" Width="165" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="234" VerticalAlignment="Top"/>
-                <Label Content="Description" Height="34" Width="165" FontSize="20" Canvas.Left="16" Canvas.Top="401" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <ScrollViewer Height="248" Canvas.Left="259" Canvas.Top="407" Width="1199" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label Content="Description" Height="34" Width="165" FontSize="20" Canvas.Left="16" Canvas.Top="462" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <ScrollViewer Height="248" Canvas.Left="259" Canvas.Top="468" Width="1199" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <RichTextBox Height="1034" Width="1181" FontSize="20">
                         <FlowDocument>
                             <Paragraph>
@@ -38,8 +47,8 @@
                         </FlowDocument>
                     </RichTextBox>
                 </ScrollViewer>
-                <DatePicker Height="38" Canvas.Left="259" Canvas.Top="231" Width="1199" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" Canvas.Left="259" Canvas.Top="21" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}"/>
+                <DatePicker x:Name="dateParution" Height="38" Canvas.Left="259" Canvas.Top="231" Width="1199" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
+                <TextBox x:Name="titre" Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" Canvas.Left="259" Canvas.Top="21" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}"/>
                 <Label Content="Image" Height="40" Width="70" FontSize="20" Canvas.Left="16" Canvas.Top="70" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <Button Height="38" Canvas.Left="1424" Canvas.Top="68" Width="40" Click="SelectFileButton_Click" Background="Black" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Button.OpacityMask>
@@ -47,8 +56,20 @@
                     </Button.OpacityMask>
                 </Button>
                 <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" Height="36" Canvas.Left="259" Canvas.Top="69" Width="1165" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <ComboBox Height="35" Canvas.Left="259" Canvas.Top="120" Width="1165" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <ComboBox Height="34" Canvas.Left="259" Canvas.Top="175" Width="1199" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <ComboBox x:Name="comboBoxAuteur" Height="35" Canvas.Left="259" Canvas.Top="120" Width="1165" 
+                          SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding auteurs}" SelectedValuePath="Id" 
+                          HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock >
+                                <Run Text="{Binding Prenom}" />
+                                
+                                <Run Text="{Binding Nom}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="comboBoxGenre" ItemsSource="{Binding genres}" Height="34" Canvas.Left="259" Canvas.Top="175" Width="1199" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18"/>
                 <Button Height="48" Canvas.Left="1424" Canvas.Top="114" Width="47" Click="AddAuteurButton_Click" Background="Black" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Button.OpacityMask>
                         <ImageBrush ImageSource="/images/add_auteur.png" Stretch="UniformToFill"/>

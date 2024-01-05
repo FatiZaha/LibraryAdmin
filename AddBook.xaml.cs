@@ -1,4 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using LibraryAdmin.Classes;
+using LibraryAdmin.DAO;
+using LibraryAdmin.LCollections;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LibraryAdmin
 {
@@ -20,14 +24,47 @@ namespace LibraryAdmin
     /// </summary>
     public partial class AddBook : Window
     {
+        LibraryContext context = new LibraryContext();
+        private LesLivres lesLivres;
+        LesAuteurs lesAuteurs;
+        public HashSet<Auteur> auteurs { get; set; }
+        public List<Genre> genres { get; set; } = Enum.GetValues(typeof(Genre)).Cast<Genre>().ToList();
+
         public AddBook()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
+
+            lesAuteurs = new LesAuteurs(context);
+            auteurs = lesAuteurs.GetAuteurs();
+
+            DataContext = this;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
+            e.Handled = !IsNumeric(e.Text);
+        }
+
+        private bool IsNumeric(string text)
+        {
+            return int.TryParse(text, out _);
+        }
+
+
+        private void AjouterLivre(object sender, RoutedEventArgs e)
+        {
+            string titreText = titre.Text;
+            string selectedFilePath = FilePathLabel.Content.ToString();
+            Genre selectedGenre = (Genre)comboBoxGenre.SelectedItem;
+            Auteur selectedAuteur = (Auteur)comboBoxAuteur.SelectedItem;
+            DateTime selectedDate = dateParution.SelectedDate ?? DateTime.MinValue;
+            float selectesPrix = float.Parse(prix.Text);
+            int selectednbrExmplr = int.Parse(nbrExmpl.Text);
+
+
+            if (titre.Text!=string.Empty) { }
+
             Livres livres = new Livres();
             livres.Show();
             this.Close();

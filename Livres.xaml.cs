@@ -27,13 +27,13 @@ namespace LibraryAdmin
     {
 
         LibraryContext context = new LibraryContext();
-        public ObservableCollection<Livre> ILivres { get; set; }
+        public ObservableCollection<Livre> CLivres { get; set; }
 
         public Livres()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            ILivres = new ObservableCollection<Livre>();
+            CLivres = new ObservableCollection<Livre>();
             
             AddBooksToStackPanel();
             DataContext = this;
@@ -47,7 +47,7 @@ namespace LibraryAdmin
 
             foreach (Livre livre in livres)
             {
-                ILivres.Add(livre);
+                CLivres.Add(livre);
             }
         }
 
@@ -60,42 +60,28 @@ namespace LibraryAdmin
             this.Close();
         }
 
-        private void Add_Book(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             AddBook addBook = new AddBook();
             addBook.Show();
             this.Close();
         }
 
-        private void Edit_Book(object sender, RoutedEventArgs e)
+        private void Add_Book(object sender, RoutedEventArgs e)
         {
-            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
-            int id = (int)button.Tag;
-            EditBook editBook = new EditBook(id);
+            EditBook editBook = new EditBook();
             editBook.Show();
             this.Close();
         }
 
-        
-
-        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        
-
-        private void SearchLivre_Click(object sender, RoutedEventArgs e)
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            LesLivres lesLivres = new LesLivres(context);
-            HashSet<Livre> livres = lesLivres.RechercheLivre(searchNav.Text);
-            ILivres.Clear();
-            foreach (Livre livre in livres)
-            {
-                ILivres.Add(livre);
-            }
-            searchNav.Text = string.Empty;
-            DataContext = this;
+
         }
     }
 }

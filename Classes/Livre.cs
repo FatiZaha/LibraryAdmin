@@ -34,7 +34,7 @@ namespace LibraryAdmin.Classes
 
         public Livre() { }
 
-        public Livre(string titre,Auteur auteur,Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
+        public Livre(string titre,Auteur auteur,Genre genre, DateTime dateParution, string description, int nbrExempl,string image, float prix)
         {
             
             this.Titre = titre;
@@ -43,7 +43,7 @@ namespace LibraryAdmin.Classes
             this.DateParution = dateParution;
             this.Description = description;
             this.NbrExempl = nbrExempl;
-            this.NbrEmpr = nbrEmpr;
+            this.NbrEmpr = 0;
             this.Image = image;
             this.Prix = prix;
         }

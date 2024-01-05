@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryAdmin.DAO;
+using LibraryAdmin.LCollections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,25 +22,43 @@ namespace LibraryAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
+        LibraryContext context;
+
         public MainWindow()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
+
+            context = new LibraryContext();
             
         }
         
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Connecting(object sender, RoutedEventArgs e)
         {
+            //ConnectAdmin admin = new ConnectAdmin(context);
+
+            //bool testcnx = admin.Connexion(login.Text, password.Password) ;
+            //if (testcnx) { 
+            //var accueil = new Accueil(); //create your new form.
+            //accueil.Show(); //show the new form.
+            //this.Close();}
+            //else
+            //{
+            //    string errorMessage = "Erreur de connexion : Champ de longin ou password incorrect ou vide !!";
+
+            //    // Afficher une fenêtre de dialogue modale avec le message d'erreur
+            //    MessageBox.Show(errorMessage, "Erreur de connexion", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            //}
+
             var accueil = new Accueil(); //create your new form.
             accueil.Show(); //show the new form.
             this.Close();
         }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
+
+        
+    
 }

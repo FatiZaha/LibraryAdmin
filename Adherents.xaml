@@ -19,40 +19,44 @@
                 <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="143,224,0,0" TextWrapping="Wrap" Background="#FFEBF9F5" BorderBrush="#FF37444A" FontSize="20" VerticalAlignment="Top" Width="1159"/>
-        <Button HorizontalAlignment="Left" Height="53" Margin="1302,218,0,0" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" Background="Black">
+        <TextBox HorizontalAlignment="Center" Height="40" Margin="0,226,0,0" TextWrapping="Wrap" Background="#FFEBF9F5" BorderBrush="#FF37444A" FontSize="20" VerticalAlignment="Top" Width="1159"/>
+        <Button HorizontalAlignment="Left" Height="53" Margin="1392,220,0,0" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" Background="Black">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/images/search_icon.png" Stretch="Uniform"/>
             </Button.OpacityMask>
         </Button>
-        <ScrollViewer HorizontalAlignment="Center" Height="528" Margin="0,276,0,0" VerticalAlignment="Top" Width="1530">
-            <StackPanel Height="965" Width="1484">
-                <Canvas Height="130" Width="1428" Background="#FFEBF9F5" Margin="0,20,0,0">
-                    <Label Content="Nom" Height="38" Canvas.Left="54" Canvas.Top="27" Width="79" FontSize="20" FontWeight="Bold"/>
-                    <Label Content="Prénom" Height="38" Canvas.Left="54" Canvas.Top="75" Width="83" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <Label Content="Nom" Height="38" Canvas.Left="164" Canvas.Top="27" Width="234" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Content="Prénom" Height="38" Canvas.Left="164" Canvas.Top="75" Width="234" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Content="Téléphone" Height="38" Canvas.Left="428" Canvas.Top="75" Width="108" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <Label Content="E-mail" Height="38" Canvas.Left="428" Canvas.Top="27" Width="101" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="E-mail" Height="38" Canvas.Left="570" Canvas.Top="27" Width="475" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Label Content="E-mail" Height="38" Canvas.Left="570" Canvas.Top="75" Width="475" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <CheckBox  Height="16" Canvas.Left="1396" Canvas.Top="14" Width="16" FontSize="20" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <CheckBox.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleX="3" ScaleY="3"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </CheckBox.RenderTransform>
-                    </CheckBox>
-                    <Button Height="82" Canvas.Left="1260" Canvas.Top="24" Width="83" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}" Click="InfoAdherent_Clik">
-                        <Button.OpacityMask>
-                            <ImageBrush ImageSource="/images/personal-information.png"/>
-                        </Button.OpacityMask>
-                    </Button>
-                </Canvas>
-            </StackPanel>
+        <ScrollViewer x:Name="scrollViewer" HorizontalAlignment="Center" Height="528" Margin="0,276,0,0" VerticalAlignment="Top" Width="1530">
+            <ItemsControl ItemsSource="{Binding IAdherents}" DataContext="{Binding YourDataContext}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Canvas Height="130" Width="1428" Background="#FFEBF9F5" Margin="0,20,0,0">
+                            <Label Content="Nom" Height="38" Canvas.Left="78" Canvas.Top="27" Width="77" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Prénom" Height="38" Canvas.Left="78" Canvas.Top="75" Width="89" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+                            <Label Content="{Binding Nom}" Height="38" Canvas.Left="185" Canvas.Top="27" Width="336" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="{Binding Prenom}" Height="38" Canvas.Left="185" Canvas.Top="75" Width="336" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="Téléphone" Height="38" Canvas.Left="578" Canvas.Top="75" Width="117" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+                            <Label Content="E-mail" Height="38" Canvas.Left="578" Canvas.Top="27" Width="109" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+                            <Label Content="{Binding Email}" Height="38" Canvas.Left="732" Canvas.Top="27" Width="513" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="{Binding Phone}" Height="38" Canvas.Left="732" Canvas.Top="75" Width="513" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <CheckBox Name="adherentCheck" IsChecked="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Height="16" Canvas.Left="12" Canvas.Top="12" Width="16" FontSize="20" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Checked="CheckBox_Checked" VerticalAlignment="Center">
+                                <CheckBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </CheckBox.RenderTransform>
+                            </CheckBox>
+                            <Button Height="82" Canvas.Left="1304" Canvas.Top="24" Width="83" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}" Click="InfoAdherent_Clik">
+                                <Button.OpacityMask>
+                                    <ImageBrush ImageSource="/images/personal-information.png"/>
+                                </Button.OpacityMask>
+                            </Button>
+                        </Canvas>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
         <Button HorizontalAlignment="Left" Height="73" Margin="1325,109,0,0" VerticalAlignment="Top" Width="80" Background="Black" BorderBrush="{x:Null}">
             <Button.OpacityMask>
@@ -64,7 +68,7 @@
                 <ImageBrush ImageSource="/images/export_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <CheckBox HorizontalAlignment="Left" Height="16" Margin="1429,225,0,0" VerticalAlignment="Top" Width="16">
+        <CheckBox x:Name="selectAllCheckBox" HorizontalAlignment="Left" Height="16" Margin="48,226,0,0" VerticalAlignment="Top" Width="16" Checked="SelectAllCheckBox_Checked">
             <CheckBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="3" ScaleY="3"/>
@@ -74,5 +78,6 @@
                 </TransformGroup>
             </CheckBox.RenderTransform>
         </CheckBox>
+        <Label Content="Select&#xD;&#xA;ALL" HorizontalAlignment="Left" Height="63" Margin="96,218,0,0" VerticalAlignment="Top" Width="64" FontSize="18" FontWeight="Bold"/>
     </Grid>
 </Window>

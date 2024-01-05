@@ -1,13 +1,7 @@
-﻿using LibraryAdmin.Classes;
-using LibraryAdmin.DAO;
-using LibraryAdmin.LCollections;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,48 +20,10 @@ namespace LibraryAdmin
     /// </summary>
     public partial class EditBook : Window
     {
-        
-
-        LibraryContext context = new LibraryContext();
-        LesAuteurs lesAuteurs;
-        public HashSet<Auteur> auteurs { get; set; }
-        int idLivre;
-        public Livre livre;
-        private LesLivres lesLivres;
-        public List<Genre> genres { get; set; } = Enum.GetValues(typeof(Genre)).Cast<Genre>().ToList();
-
-
-
-
-        public EditBook(int id)
+        public EditBook()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            lesAuteurs = new LesAuteurs(context);
-            auteurs = lesAuteurs.GetAuteurs();
-
-            this.idLivre = id;
-            lesLivres = new LesLivres(context);
-            this.livre = lesLivres.GetUnLivre(idLivre);
-            
-
-            AfficherInfoLivre();
-            DataContext = this;
-        }
-
-        public void AfficherInfoLivre()
-        {
-            titre.Text = livre.Titre.ToString();
-            FilePathLabel.Content = livre.Image.ToString();
-            auteurLivre.Text = $"{livre.Auteur.Prenom} {livre.Auteur.Nom}";
-            genreLivre.Text = livre.Genre.ToString();
-            dateParution.Text = livre.DateParution.ToString();
-            nbrExmpl.Text = livre.NbrExempl.ToString();
-            nbrEmpr.Text=livre.NbrEmpr.ToString();
-            prix.Text=livre.Prix.ToString();
-            description.Text = livre.Description.ToString();
-
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

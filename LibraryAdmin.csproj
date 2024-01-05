@@ -141,6 +141,7 @@
     <Compile Include="Classes\Genre.cs" />
     <Compile Include="Classes\Livre.cs" />
     <Compile Include="Classes\Panier.cs" />
+    <Compile Include="Classes\Status.cs" />
     <Compile Include="DAO\LibraryContext.cs" />
     <Compile Include="EditBook.xaml.cs">
       <DependentUpon>EditBook.xaml</DependentUpon>
@@ -154,6 +155,7 @@
     <Compile Include="InfoAdherent.xaml.cs">
       <DependentUpon>InfoAdherent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LCollections\ConnectAdmin.cs" />
     <Compile Include="LCollections\LesAdherents.cs" />
     <Compile Include="LCollections\LesAuteurs.cs" />
     <Compile Include="LCollections\LesEmployees.cs" />
@@ -169,17 +171,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202401032256030_InitialCreate.cs" />
-    <Compile Include="Migrations\202401032256030_InitialCreate.designer.cs">
-      <DependentUpon>202401032256030_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401041128414_initiacreate.cs" />
-    <Compile Include="Migrations\202401041128414_initiacreate.designer.cs">
-      <DependentUpon>202401041128414_initiacreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401042242189_initiacreate1.cs" />
-    <Compile Include="Migrations\202401042242189_initiacreate1.designer.cs">
-      <DependentUpon>202401042242189_initiacreate1.cs</DependentUpon>
+    <Compile Include="Migrations\202401052102158_initialcreate.cs" />
+    <Compile Include="Migrations\202401052102158_initialcreate.designer.cs">
+      <DependentUpon>202401052102158_initialcreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -195,14 +189,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202401032256030_InitialCreate.resx">
-      <DependentUpon>202401032256030_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401041128414_initiacreate.resx">
-      <DependentUpon>202401041128414_initiacreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401042242189_initiacreate1.resx">
-      <DependentUpon>202401042242189_initiacreate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401052102158_initialcreate.resx">
+      <DependentUpon>202401052102158_initialcreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -268,7 +256,9 @@
   <ItemGroup>
     <Resource Include="images\return_book.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\estante-de-luxo-em-sala-de-estar-antiquada-gerada-por-ia.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
