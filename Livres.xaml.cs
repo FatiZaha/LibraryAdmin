@@ -17,6 +17,7 @@ using LibraryAdmin.Classes;
 using LibraryAdmin.DAO;
 using LibraryAdmin.LCollections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace LibraryAdmin
 {
@@ -27,13 +28,13 @@ namespace LibraryAdmin
     {
 
         LibraryContext context = new LibraryContext();
-        public ObservableCollection<Livre> CLivres { get; set; }
+        public ObservableCollection<Livre> ILivres { get; set; }
 
         public Livres()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            CLivres = new ObservableCollection<Livre>();
+            ILivres = new ObservableCollection<Livre>();
             
             AddBooksToStackPanel();
             DataContext = this;
@@ -47,7 +48,7 @@ namespace LibraryAdmin
 
             foreach (Livre livre in livres)
             {
-                CLivres.Add(livre);
+                ILivres.Add(livre);
             }
         }
 
@@ -76,6 +77,33 @@ namespace LibraryAdmin
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            LesLivres lesLivres = new LesLivres(context); // Remplacez "context" par votre instance de LibraryContext
+            HashSet<Livre> livres;
+
+            TextBox textBox = (TextBox)sender;
+
+            if(textBox.Text != string.Empty) { 
+
+                livres = lesLivres.RechercheLivre(textBox.Text);
+
+                ILivres.Clear();
+                foreach (Livre livre in livres)
+                {
+                    ILivres.Add(livre);
+                }
+            }
+
+            else
+            {
+                livres = lesLivres.GetLivres();
+                ILivres.Clear();
+                foreach (Livre livre in livres)
+                {
+                    ILivres.Add(livre);
+                }
+            }
+
+            DataContext = this;
 
         }
 

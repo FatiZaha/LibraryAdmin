@@ -14,32 +14,33 @@
 
         <Grid Background="White" Margin="0,208,0,0">
             <ScrollViewer>
-                <StackPanel>
-                    <Canvas HorizontalAlignment="Left" Height="143" Margin="50,12,0,0" Width="1435" Background="#FFEBF9F5">
-                        <!-- Canvas content -->
-                        <Image Height="129" Canvas.Left="7" Width="107" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="6" Source="/images/LogoWindow.png"/>
-                        <Label Content="Nom &amp; Prenom" Height="32" Canvas.Left="163" Canvas.Top="16" Width="565" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
-                        <Label Content="nameAuteur" Height="38" Canvas.Left="310" Canvas.Top="63" Width="133" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Content="Genre" Height="43" Canvas.Left="193" Canvas.Top="62" Width="64" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ItemsControl ItemsSource="{Binding IEmployees}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Canvas HorizontalAlignment="Left" Height="143" Margin="50,12,0,0" Width="1435" Background="#FFEBF9F5">
+                                <!-- Canvas content -->
+                                <Image Height="129" Canvas.Left="7" Width="107" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="6" Source="/images/LogoWindow.png"/>
+                                <Label Content="{Binding Nom}" Height="38" Canvas.Left="310" Canvas.Top="39" Width="389" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <Label Content="Nom" Height="43" Canvas.Left="193" Canvas.Top="38" Width="64" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-                        <Button x:Name="editBtn" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center" Width="44" Click="EditEmployeesBtn_Click" Canvas.Left="1338" Canvas.Top="9" Cursor="Hand" Background="Black" BorderBrush="{x:Null}">
-                            <Button.OpacityMask>
-                                <ImageBrush ImageSource="/images/edit.png" Stretch="UniformToFill"/>
-                            </Button.OpacityMask>
-                        </Button>
-                        <Button x:Name="deleteBtn" Height="50" Width="52" Click="DeleteBtn_Click" Canvas.Left="1330" Canvas.Top="79" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Black" BorderBrush="{x:Null}">
-                            <Button.OpacityMask>
-                                <ImageBrush ImageSource="/images/delete_icon.png" Stretch="Uniform"/>
-                            </Button.OpacityMask>
-                        </Button>
-                        <Label Content="nameAuteur" Height="33" Canvas.Left="918" Canvas.Top="57" Width="131" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Content="N°Exemplaires" Height="37" Canvas.Left="733" Canvas.Top="57" Width="130" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Content="nameAuteur" Height="32" Canvas.Left="918" Canvas.Top="86" Width="131" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Content="N°Empruntes" Height="37" Canvas.Left="733" Canvas.Top="86" Width="130" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Content="Prix/jrs" Height="37" Canvas.Left="193" Canvas.Top="92" Width="83" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Label Content="nameAuteur" Height="37" Canvas.Left="311" Canvas.Top="92" Width="133" FontSize="16" RenderTransformOrigin="0.493,0.001" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    </Canvas>
-                </StackPanel>
+                                <Button x:Name="editBtn" Tag="{Binding Id}" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center" Width="44" Click="EditEmployeesBtn_Click" Canvas.Left="1338" Canvas.Top="9" Cursor="Hand" Background="Black" BorderBrush="{x:Null}">
+                                    <Button.OpacityMask>
+                                        <ImageBrush ImageSource="/images/edit.png" Stretch="UniformToFill"/>
+                                    </Button.OpacityMask>
+                                </Button>
+                                <Button x:Name="deleteBtn" Tag="{Binding Id}" Height="50" Width="52" Click="DeleteBtn_Click" Canvas.Left="1330" Canvas.Top="79" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Black" BorderBrush="{x:Null}">
+                                    <Button.OpacityMask>
+                                        <ImageBrush ImageSource="/images/delete_icon.png" Stretch="Uniform"/>
+                                    </Button.OpacityMask>
+                                </Button>
+                                <Label Content="{Binding Status}" Height="32" Canvas.Left="842" Canvas.Top="54" Width="458" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <Label Content="Rôle" Height="37" Canvas.Left="733" Canvas.Top="54" Width="53" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <Label Content="Prénom" Height="37" Canvas.Left="193" Canvas.Top="74" Width="83" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Label Content="{Binding Prenom}" Height="37" Canvas.Left="313" Canvas.Top="74" Width="389" FontSize="16" RenderTransformOrigin="0.493,0.001" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Canvas>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
         </Grid>
         <Button x:Name="backBtn" HorizontalAlignment="Left" Height="64" Margin="1463,10,0,0" VerticalAlignment="Top" Width="47" Click="Button_Click" Background="Black" BorderBrush="{x:Null}">

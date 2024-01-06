@@ -1,5 +1,9 @@
-﻿using System;
+﻿using LibraryAdmin.Classes;
+using LibraryAdmin.DAO;
+using LibraryAdmin.LCollections;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +23,30 @@ namespace LibraryAdmin
     /// </summary>
     public partial class Employes : Window
     {
+        LibraryContext context = new LibraryContext();
+
+        public ObservableCollection<Employee> IEmployees { get; set; }
+
         public Employes()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
+
+            IEmployees = new ObservableCollection<Employee>();
+
+            AddEmployeesToStachPanel();
+            DataContext = this;
+        }
+
+        public void AddEmployeesToStachPanel()
+        {
+            LesEmployees lesEmployees = new LesEmployees(context);
+            HashSet<Employee> employees = lesEmployees.GetEmployees();
+
+            foreach (Employee employee in employees)
+            {
+                IEmployees.Add(employee);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,13 +66,25 @@ namespace LibraryAdmin
 
         private void EditEmployeesBtn_Click(object sender, RoutedEventArgs e)
         {
-            var editEmp=new EditEmployees();
+            Button button = (Button)sender;
+            int id = int.Parse((string)button.Tag);
+            
+            var editEmp=new EditEmployees(id);
             editEmp.Show();
             this.Close();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            LesEmployees lesEmployees = new LesEmployees(context);
+            HashSet<Employee> employees = lesEmployees.RechercheEmployees(sender.ToString());
+            IEmployees.Clear();
+            foreach (Employee employee in employees)
+            {
+                IEmployees.Add(employee);
+            }
+
+            DataContext = this;
 
         }
 

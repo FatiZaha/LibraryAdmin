@@ -54,21 +54,12 @@ namespace LibraryAdmin.LCollections
             context.SaveChanges();
         }
 
-        public HashSet<Livre> RechercheLivre_Genre(Genre genre)
+        public HashSet<Livre> RechercheLivre(string search)
         {
-            var livres = context.Livres.Where(l => l.Genre == genre).ToHashSet();
-            return livres;
-        }
-
-        public HashSet<Livre> RechercheLivre_Auteur(Auteur auteur)
-        {
-            var livres = context.Livres.Where(l => l.AuteurId == auteur.Id).ToHashSet();
-            return livres;
-        }
-
-        public HashSet<Livre> RechercheLivre_Titre(string titre)
-        {
-            var livres = context.Livres.Where(l => l.Titre == titre).ToHashSet();
+            var livres = context.Livres.Where(l => l.Titre.ToLower().Contains(search.ToLower()) ||
+                                                   l.Auteur.Nom.ToLower().Contains(search.ToLower()) ||
+                                                   l.Auteur.Prenom.ToLower().Contains(search.ToLower()) ||
+                                                   l.Genre.ToString().ToLower().Contains(search.ToLower())).ToHashSet();
             return livres;
         }
 
@@ -76,6 +67,11 @@ namespace LibraryAdmin.LCollections
         {
             
             return context.Livres.ToHashSet();
+        }
+        public Livre GetUnLivre(int id)
+        {
+            Livre livre = context.Livres.FirstOrDefault(l => l.Id == id);
+            return livre;
         }
     }
 }

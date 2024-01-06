@@ -50,7 +50,7 @@
                         <ImageBrush ImageSource="/images/img_file.png" Stretch="UniformToFill"/>
                     </Button.OpacityMask>
                 </Button>
-<<<<<<< HEAD
+
                 <Label x:Name="FilePathLabel" Height="36" Canvas.Left="259" Canvas.Top="69" Width="1150" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <ComboBox x:Name="auteur" ItemsSource="{Binding auteurs}" SelectedValuePath="Id" 
                           Height="35" Canvas.Left="689" Canvas.Top="120" Width="705" 
@@ -67,16 +67,14 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <ComboBox x:Name="genre" ItemsSource="{Binding genres}" Height="34" Canvas.Left="689" Canvas.Top="175" Width="754" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Background="{x:Null}"/>
-=======
-                <Label x:Name="FilePathLabel" Content="Sélectionner un fichier" Height="36" Canvas.Left="259" Canvas.Top="69" Width="1150" FontSize="20" BorderThickness="1" BorderBrush="#FFABADB3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <ComboBox Height="35" Canvas.Left="259" Canvas.Top="120" Width="1150" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="ComboBox_SelectionChanged"/>
-                <ComboBox Height="34" Canvas.Left="259" Canvas.Top="175" Width="1184" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center"/>
->>>>>>> parent of 5fd6eba (edit)
+
                 <Button Height="48" Canvas.Left="1409" Canvas.Top="114" Width="47" Click="AddAuteurButton_Click" Background="Black" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button.OpacityMask>
                         <ImageBrush ImageSource="/images/add_auteur.png" Stretch="UniformToFill"/>
                     </Button.OpacityMask>
                 </Button>
+                <TextBlock x:Name="auteurLivre" Height="33" Canvas.Left="259" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="120" Width="391" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="#FFB3FFE8"/>
+                <TextBlock x:Name="genreLivre" Height="33" Canvas.Left="259" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="176" Width="391" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="#FFB3FFE8"/>
             </Canvas>
         </ScrollViewer>
 

@@ -48,5 +48,11 @@ namespace LibraryAdmin.LCollections
         {
             return context.Adherents.ToHashSet();
         }
+
+        public Adherent GetUnAdherent(int id)
+        {
+            Adherent adherent = context.Adherents.FirstOrDefault(adh => adh.Id == id);
+            return adherent;
+        }
     }
 }

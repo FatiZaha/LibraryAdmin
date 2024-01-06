@@ -34,5 +34,10 @@ namespace LibraryAdmin.LCollections
         {
             return context.Auteurs.ToHashSet();
         }
+        public Auteur GetUnAuteur(int id)
+        {
+            Auteur auteur = context.Auteurs.FirstOrDefault(a => a.Id == id);
+            return auteur;
+        }
     }
 }

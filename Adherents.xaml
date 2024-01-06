@@ -26,7 +26,7 @@
             </Button.OpacityMask>
         </Button>
         <ScrollViewer x:Name="scrollViewer" HorizontalAlignment="Center" Height="528" Margin="0,276,0,0" VerticalAlignment="Top" Width="1530">
-            <ItemsControl ItemsSource="{Binding IAdherents}" DataContext="{Binding YourDataContext}">
+            <ItemsControl ItemsSource="{Binding IAdherents}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Canvas Height="130" Width="1428" Background="#FFEBF9F5" Margin="0,20,0,0">
@@ -48,7 +48,7 @@
                                     </TransformGroup>
                                 </CheckBox.RenderTransform>
                             </CheckBox>
-                            <Button Height="82" Canvas.Left="1304" Canvas.Top="24" Width="83" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}" Click="InfoAdherent_Clik">
+                            <Button Tag="{Binding Id}" Height="82" Canvas.Left="1304" Canvas.Top="24" Width="83" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Black" BorderBrush="{x:Null}" Click="InfoAdherent_Clik">
                                 <Button.OpacityMask>
                                     <ImageBrush ImageSource="/images/personal-information.png"/>
                                 </Button.OpacityMask>
