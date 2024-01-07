@@ -44,12 +44,12 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Button HorizontalAlignment="Left" Height="73" Margin="1325,109,0,0" VerticalAlignment="Top" Width="80" Background="Black" BorderBrush="{x:Null}">
+        <Button Click="Importer_CSV" HorizontalAlignment="Left" Height="73" Margin="1325,109,0,0" VerticalAlignment="Top" Width="80" Background="Black" BorderBrush="{x:Null}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/images/import_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <Button HorizontalAlignment="Left" Height="73" Margin="1428,109,0,0" VerticalAlignment="Top" Width="80" Background="Black" BorderBrush="{x:Null}">
+        <Button Click="Exporter_CSV" HorizontalAlignment="Left" Height="73" Margin="1428,109,0,0" VerticalAlignment="Top" Width="80" Background="Black" BorderBrush="{x:Null}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/images/export_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>

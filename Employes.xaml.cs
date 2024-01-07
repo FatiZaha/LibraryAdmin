@@ -112,7 +112,13 @@ namespace LibraryAdmin
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Tag);
 
+            LesEmployees lesEmployees=new LesEmployees(context);
+            Employee employee = lesEmployees.GetUnEmployee(id);
+            lesEmployees.RemoveEmployee(id);
+            IEmployees.Remove(employee);
         }
 
     }

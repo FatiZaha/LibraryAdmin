@@ -19,7 +19,7 @@
                         <DataTemplate>
                             <Canvas HorizontalAlignment="Left" Height="143" Margin="50,12,0,0" Width="1435" Background="#FFEBF9F5">
                                 <!-- Canvas content -->
-                                <Image Height="129" Canvas.Left="7" Width="107" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="6" Source="/images/LogoWindow.png"/>
+                                <Image Height="129" Canvas.Left="7" Width="107" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="6" Source="{Binding Image}"/>
                                 <Label Content="{Binding Nom}" Height="38" Canvas.Left="310" Canvas.Top="39" Width="389" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                 <Label Content="Nom" Height="43" Canvas.Left="193" Canvas.Top="38" Width="64" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 

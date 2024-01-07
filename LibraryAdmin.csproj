@@ -102,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ImporterAdherentsDepuisCSV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InfoAdherent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +155,9 @@
     </Compile>
     <Compile Include="Employes.xaml.cs">
       <DependentUpon>Employes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImporterAdherentsDepuisCSV.xaml.cs">
+      <DependentUpon>ImporterAdherentsDepuisCSV.xaml</DependentUpon>
     </Compile>
     <Compile Include="InfoAdherent.xaml.cs">
       <DependentUpon>InfoAdherent.xaml</DependentUpon>
@@ -286,6 +293,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\estante-de-luxo-em-sala-de-estar-antiquada-gerada-por-ia.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="add_auteur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\edit_auteur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

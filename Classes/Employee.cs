@@ -43,5 +43,17 @@ namespace LibraryAdmin.Classes
             Image = image;
             DateNaissance = dateNaissance;
         }
+
+        public void Edit_Employee(string nom, string prenom, Status status, string adresse, string email, string phone, string image, DateTime dateNaissance)
+
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Adresse = adresse;
+            Email = email;
+            Phone = phone;
+            Image = image;
+            DateNaissance = dateNaissance;
+        }
     }
 }

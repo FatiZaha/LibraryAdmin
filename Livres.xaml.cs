@@ -29,12 +29,17 @@ namespace LibraryAdmin
 
         LibraryContext context = new LibraryContext();
         public ObservableCollection<Livre> ILivres { get; set; }
+        LesAuteurs Auteurs;
+        public HashSet<Auteur> auteurs {  get; set; }
 
         public Livres()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
             ILivres = new ObservableCollection<Livre>();
+
+            Auteurs = new LesAuteurs(context);
+            auteurs = Auteurs.GetAuteurs();
             
             AddBooksToStackPanel();
             DataContext = this;
@@ -132,8 +137,13 @@ namespace LibraryAdmin
             string buttonText = button.Content.ToString();
 
             // Effectuez les actions souhaitées en fonction du bouton cliqué
-            MessageBox.Show($"Vous avez cliqué sur le bouton '{buttonText}'.");
+            
             myPopup.IsOpen = false;
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            myPopup.IsOpen=false;
         }
     }
 }

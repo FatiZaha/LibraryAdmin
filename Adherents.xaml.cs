@@ -16,6 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using Microsoft.Win32;
+using System.IO;
+
 namespace LibraryAdmin
 {
     /// <summary>
@@ -26,7 +29,6 @@ namespace LibraryAdmin
         LibraryContext context = new LibraryContext();
         
         public ObservableCollection<Adherent> IAdherents { get; set; }
-        private List<int> checkedIds = new List<int>();
 
         public Adherents()
         {
@@ -70,63 +72,8 @@ namespace LibraryAdmin
 
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            var checkBox = (CheckBox)sender;
-            var adherent = (Adherent)checkBox.DataContext;
+        
 
-            if (checkBox.IsChecked == true)
-            {
-                // Ajouter l'ID de l'adhérent à la liste
-                checkedIds.Add(adherent.Id);
-            }
-            else
-            {
-                // Retirer l'ID de l'adhérent de la liste s'il est déjà présent
-                checkedIds.Remove(adherent.Id);
-            }
-        }
-
-
-        private void SelectAllCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            var checkBox = (CheckBox)sender;
-            int adherent;
-            if (checkBox.IsChecked == false)
-            {
-                foreach (var item in dataTemplate.Items)
-                {
-                    if (item is FrameworkElement frameworkElement)
-                    {
-                        var adherentCheckBox = frameworkElement.FindName("adherentCheck") as CheckBox;
-                        if (adherentCheckBox != null)
-                        {
-                            adherent = Convert.ToInt32(adherentCheckBox.Tag);
-
-                            adherentCheckBox.IsChecked = true;
-                            checkedIds.Add(adherent);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                foreach (var item in dataTemplate.Items)
-                {
-                    if (item is FrameworkElement frameworkElement)
-                    {
-                        var adherentCheckBox = frameworkElement.FindName("adherentCheck") as CheckBox;
-                        if (adherentCheckBox != null)
-                        {
-                            adherent = Convert.ToInt32(adherentCheckBox.Tag);
-
-                            adherentCheckBox.IsChecked = false;
-                            checkedIds.Remove(adherent);
-                        }
-                    }
-                }
-            }
-        }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -160,6 +107,74 @@ namespace LibraryAdmin
 
             DataContext = this;
 
+        }
+
+        private void Importer_CSV(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Fichier CSV (*.csv)|*.csv";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filePath = openFileDialog.FileName;
+
+                // Appel à la méthode pour importer les données des adhérents depuis le fichier CSV
+                ImporterAdherentsDepuisCSV i = new ImporterAdherentsDepuisCSV(filePath);
+                i.Show();
+                this.Close();
+            }
+        }
+
+        private void ExporterAdherentsEnCSV(string filePath)
+        {
+            // Récupérer les adhérents sélectionnés en fonction des IDs dans la liste checkedIds
+            List<Adherent> adherentsExport = IAdherents.ToList();
+
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                // Écrire l'en-tête du fichier CSV
+                
+
+                writer.WriteLine("\"Id\",\"Nom\",\"Prenom\",\"Email\",\"Adresse\",\"DateNaissance\",\"Phone\",\"Login\",\"Password\""); // Ajoutez les autres colonnes nécessaires
+
+                // Écrire les données des adhérents
+                foreach (Adherent adherent in adherentsExport)
+                {
+                    writer.Write($"\"{adherent.Id}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Nom}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Prenom}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Email}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Adresse}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.DateNaissance}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Phone}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Login}\"");
+                    writer.Write(",");
+                    writer.Write($"\"{adherent.Password}\"");
+                    writer.WriteLine(); // Nouvelle ligne pour chaque adhérent
+                }
+            }
+
+            MessageBox.Show("Exportation réussie", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Exporter_CSV(object sender, RoutedEventArgs e)
+        {
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Fichier CSV (*.csv)|*.csv|*.xls";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Appel à la méthode pour exporter les données des adhérents vers le fichier CSV en utilisant le chemin du fichier sélectionné
+                ExporterAdherentsEnCSV(filePath);
+            }
         }
     }
 }

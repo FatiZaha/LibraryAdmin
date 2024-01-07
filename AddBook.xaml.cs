@@ -75,7 +75,9 @@ namespace LibraryAdmin
 
                 string selectedFilePath = FilePathLabel.Content.ToString();
                 if(selectedFilePath == "Sélectionner un fichier")  throw ex ;
+                if (comboBoxGenre.SelectedItem is null) throw ex;
                 Genre selectedGenre = (Genre)comboBoxGenre.SelectedItem;
+                if (comboBoxAuteur.SelectedItem is null) throw ex;
                 Auteur selectedAuteur = (Auteur)comboBoxAuteur.SelectedItem;
                 
                 float selectesPrix = Convert.ToInt32(prix.Text);

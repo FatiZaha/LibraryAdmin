@@ -59,6 +59,8 @@ namespace LibraryAdmin
             description.Text = livre.Description.ToString();
             prix.Text = livre.Prix.ToString();
             datePicker.Text=livre.DateParution.ToString();
+            genre.SelectedItem = livre.Genre;
+            auteur.SelectedItem = livre.Auteur;
         }
 
 
@@ -76,6 +78,8 @@ namespace LibraryAdmin
                 if (Convert.ToInt32(prix.Text) <= 0) throw ex;
                 if(datePicker == null) throw ex;
                 if(FilePathLabel.Content == null) throw ex;
+                
+
                 float p = Convert.ToInt32(prix.Text);
                 lesLivres = new LesLivres(context);
                 lesLivres.Editer_lv(idLivre, titre.Text, (Auteur)auteur.SelectedItem, (Genre)genre.SelectedItem,(DateTime)datePicker.SelectedDate, description.Text, Convert.ToInt32(nbrExmpl.Text), Convert.ToInt32(nbrEmpr.Text), FilePathLabel.Content.ToString(), p);

@@ -31,12 +31,16 @@ namespace LibraryAdmin.LCollections
             return false;
         }
 
+        public void Edit_Employee(int id,string nom, string prenom, Status status, string adresse, string email, string phone, string image, DateTime dateNaissance)
+        {
+            context.Employees.Where(emp => emp.Id == id).First().Edit_Employee(nom, prenom, status, adresse, email, phone, image, dateNaissance);
+            context.SaveChanges();
+        }
+
         public void RemoveEmployee(int id)
         {
-            var emp = from e in context.Employees
-                      where e.Id == id
-                      select e;
-            context.Employees.Remove((Employee)emp);
+            Employee emp= context.Employees.Where(e=> e.Id == id).First();
+            context.Employees.Remove(emp);
             context.SaveChanges();
         }
 

@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LibraryAdmin.Classes;
 
 namespace LibraryAdmin
 {
@@ -55,14 +56,62 @@ namespace LibraryAdmin
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void AjouterLivre(object sender, RoutedEventArgs e)
         {
-            Employes employes = new Employes();
-            employes.Show();
-            this.Close();
+            
+
+
+
+
+
         }
 
+
         private void AddEmpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Exception ex = new Exception("Les insertions sont invalide ou champ vide !");
+            Exception ex2 = new Exception("L'employée existe déjà !!");
+            try
+            {
+                if( nom.Text is null) throw ex;
+                if(dateNaissance.SelectedDate is null) throw ex;
+
+                if( prenom.Text is null) throw ex;
+
+                if (FilePathLabel.Content.ToString() == "Sélectionner un fichier") throw ex;
+                if(role.SelectedItem is null) throw ex;
+
+                if(email.Text is null) throw ex;
+                if (adresse.Text is null) throw ex;
+
+                if(phone.Text is null)throw ex;
+
+                try
+                {
+                    lesEmployees = new LesEmployees(context);
+                    bool test = lesEmployees.Ajouter_Emp(nom.Text, prenom.Text, (Status)role.SelectedItem, adresse.Text, email.Text, phone.Text, FilePathLabel.Content.ToString(), (DateTime)dateNaissance.SelectedDate) ;
+                    if (!test) throw ex2;
+                    Employes employes = new Employes();
+                    employes.Show();
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(ex2.Message);
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Employes employes = new Employes();
             employes.Show();
