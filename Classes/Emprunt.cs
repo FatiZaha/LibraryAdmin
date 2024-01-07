@@ -23,30 +23,22 @@ namespace LibraryAdmin.Classes
         public Adherent Adherent { get; set; }
         public int AdherentId { get; set; }
 
-        private DateTime date_empr;
-        private DateTime date_retour;
+        public DateTime Date_empr {  get; set; }
+        public DateTime Date_retour { get; set; }
         public float Montant { get; set; }
-
-        public DateTime Date_empr { get => date_empr; set { date_empr = value; this.Montant = this.CalculeMontant(); } }
-        public DateTime Date_retour { get => date_retour; set { date_retour = value; this.Montant = this.CalculeMontant(); } }
         public bool EtatRetour { get; set; }
 
-        public float CalculeMontant()
-        {
-            int joursEmprunt = (int)(date_retour - date_empr).TotalDays;
-            float m;
-            m=Livre.Prix*joursEmprunt;
-            return m;
-        }
+        
 
         public Emprunt() { }
 
-        public Emprunt(Livre livre, Adherent adherent, DateTime date_empr, DateTime date_retour)
+        public Emprunt(Livre livre, Adherent adherent, DateTime date_empr, DateTime date_retour, float montant, bool etatRetour)
         {
             this.Livre=livre; this.Adherent=adherent;
-            this.date_empr = date_empr;
-            this.date_retour = date_retour;
-            this.Montant = this.CalculeMontant();
+            this.Date_empr = date_empr;
+            this.Date_retour = date_retour;
+            this.Montant = montant;
+            this.EtatRetour = etatRetour;
         }
 
     }

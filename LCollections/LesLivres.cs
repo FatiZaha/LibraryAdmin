@@ -22,7 +22,7 @@ namespace LibraryAdmin.LCollections
             var exist = context.Livres.Any(l => l.Titre == titre && l.AuteurId == auteur.Id);
             if (!exist)
             {
-                Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl,image, prix);
+                Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl,0,image, prix);
                 context.Livres.Add(livre);
                 context.SaveChanges();
                 return true;
@@ -30,14 +30,21 @@ namespace LibraryAdmin.LCollections
             return false;
         }
 
+        public void Editer_lv(int id,string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
+        {
+
+            context.Livres.Where(l=> l.Id == id ).First().Editer_livre(titre,auteur, genre, dateParution, description,nbrExempl,nbrEmpr,image, prix);
+            context.SaveChanges();
+
+        }
+
         public void Remove(int id)
         {
-            var livre = from l in context.Livres
-                         where l.Id == id
-                         select l;
+            
             var empr= from e in context.Emprunts
                       where e.LivreId == id
                       select e;
+            if(empr.Count() > 0 )
             foreach( var e in empr.ToList() )
             {
                 context.Emprunts.Remove((Emprunt)e);
@@ -45,12 +52,14 @@ namespace LibraryAdmin.LCollections
             var panier = from p in context.Panier
                        where p.LivreId == id
                        select p;
+            if(panier.Count() > 0)
             foreach( var p in panier.ToList() )
             {
                 context.Panier.Remove((Panier)p);
             }
             
-            context.Livres.Remove((Livre)livre);
+            Livre livre=context.Livres.Where(l=>l.Id==id).First();
+            context.Livres.Remove(livre);
             context.SaveChanges();
         }
 

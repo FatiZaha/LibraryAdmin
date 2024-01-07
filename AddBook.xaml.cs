@@ -24,6 +24,17 @@ namespace LibraryAdmin
     /// </summary>
     public partial class AddBook : Window
     {
+        private int? _numericValue;
+        public int? NumericValue
+        {
+            get { return _numericValue; }
+            set
+            {
+                _numericValue = value;
+                // Ajoutez ici le code de notification de modification de la propriété
+            }
+        }
+
         LibraryContext context = new LibraryContext();
         private LesLivres lesLivres;
         LesAuteurs lesAuteurs;
@@ -54,20 +65,48 @@ namespace LibraryAdmin
 
         private void AjouterLivre(object sender, RoutedEventArgs e)
         {
-            string titreText = titre.Text;
-            string selectedFilePath = FilePathLabel.Content.ToString();
-            Genre selectedGenre = (Genre)comboBoxGenre.SelectedItem;
-            Auteur selectedAuteur = (Auteur)comboBoxAuteur.SelectedItem;
-            DateTime selectedDate = dateParution.SelectedDate ?? DateTime.MinValue;
-            float selectesPrix = float.Parse(prix.Text);
-            int selectednbrExmplr = int.Parse(nbrExmpl.Text);
+            Exception ex = new Exception("Les insertions sont invalide ou champ vide !");
+            Exception ex2 = new Exception("Le livre existe déjà !!");
+            try
+            {
+                string titreText = titre.Text ?? throw ex;
+                DateTime selectedDate = dateParution.SelectedDate ?? throw ex;
+               string descript = desciprion.Text ?? throw ex;
 
+                string selectedFilePath = FilePathLabel.Content.ToString();
+                if(selectedFilePath == "Sélectionner un fichier")  throw ex ;
+                Genre selectedGenre = (Genre)comboBoxGenre.SelectedItem;
+                Auteur selectedAuteur = (Auteur)comboBoxAuteur.SelectedItem;
+                
+                float selectesPrix = Convert.ToInt32(prix.Text);
+                if(selectesPrix == 0) throw ex ;
 
-            if (titre.Text!=string.Empty) { }
+                int selectednbrExmplr = Convert.ToInt32(nbrExmpl.Text);
+                if (selectednbrExmplr == 0) throw ex;
 
-            Livres livres = new Livres();
-            livres.Show();
-            this.Close();
+                try 
+                {
+                    lesLivres = new LesLivres(context);
+                bool test=lesLivres.Ajouter_lv(titreText, selectedAuteur, selectedGenre, selectedDate, descript, selectednbrExmplr, selectedFilePath, selectesPrix);
+                if(!test) throw ex2 ;
+                Livres livres = new Livres();
+                livres.Show();
+                this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(ex2.Message);
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            
+
+            
             
         }
 

@@ -28,21 +28,18 @@
                 <TextBox PreviewTextInput="NumberValidationTextBox" 
                          Text="{Binding NumericValue, UpdateSourceTrigger=PropertyChanged}"
                          x:Name="nbrExmpl" Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="292" VerticalAlignment="Top"/>
+                <Label Content="Prix" Height="34" Width="68" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="352" VerticalAlignment="Top"/>
                 <TextBox PreviewTextInput="NumberValidationTextBox" 
                          Text="{Binding NumericValue, UpdateSourceTrigger=PropertyChanged}"
-                         x:Name="prix" Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="349" VerticalAlignment="Top"/>
-
-                <Label Content="Nombre des exemplaires" Height="45" Width="236" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="341" VerticalAlignment="Top"/>
-                <Label Content="Prix" Height="34" Width="68" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="406" VerticalAlignment="Top"/>
-                <TextBox Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Left" Canvas.Left="259" Canvas.Top="405" VerticalAlignment="Center"/>
+                         x:Name="prix" Height="34" TextWrapping="Wrap" Width="1199" FontSize="20" HorizontalAlignment="Center" Canvas.Left="259" Canvas.Top="351" VerticalAlignment="Top"/>
 
                 <Label Content="Date de parution" Height="34" Width="165" FontSize="20" HorizontalAlignment="Center" Canvas.Left="16" Canvas.Top="234" VerticalAlignment="Top"/>
-                <Label Content="Description" Height="34" Width="165" FontSize="20" Canvas.Left="16" Canvas.Top="462" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <ScrollViewer Height="248" Canvas.Left="259" Canvas.Top="468" Width="1199" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Label Content="Description" Height="34" Width="165" FontSize="20" Canvas.Left="16" Canvas.Top="408" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <ScrollViewer Height="248" Canvas.Left="259" Canvas.Top="414" Width="1199" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <RichTextBox Height="1034" Width="1181" FontSize="20">
                         <FlowDocument>
                             <Paragraph>
-                                <Run Text=""/>
+                                <Run x:Name="desciprion" Text=""/>
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>

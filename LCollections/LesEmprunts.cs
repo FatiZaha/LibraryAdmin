@@ -34,21 +34,32 @@ namespace LibraryAdmin.LCollections
             }
         }
 
+        
+
         public bool AddEmprunt(Livre livre, Adherent adherent, DateTime date_empr, DateTime date_retour)
         {
-            if (livre.NbrEmpr == livre.NbrExempl) return false;
-            livre.NbrEmpr++;
-            Emprunt emprunt = new Emprunt(livre, adherent, date_empr, date_retour);
-            context.Emprunts.Add(emprunt);
-            context.SaveChanges();
-            return true;
+            if (livre.NbrEmpr < livre.NbrExempl)
+            {
+                livre.NbrEmpr++;
+                Emprunt emprunt = new Emprunt(livre, adherent, date_empr, date_retour, 0, false);
+
+                int joursEmprunt = (int)(emprunt.Date_retour - emprunt.Date_empr).TotalDays;
+                emprunt.Montant = emprunt.Livre.Prix * joursEmprunt;
+
+                context.Emprunts.Add(emprunt);
+                context.SaveChanges();
+                return true;
+            }
+
+            return false;
+
         }
 
         public HashSet<Emprunt> ListeEmprunt(int idAdherent)
         {
             var e = from emp in context.Emprunts
                     join adh in context.Adherents
-                    on emp.Id equals adh.Id
+                    on emp.AdherentId equals adh.Id
                     where emp.EtatRetour == false && adh.Id == idAdherent
                     select emp;
             return e.ToHashSet();
@@ -58,7 +69,7 @@ namespace LibraryAdmin.LCollections
         {
             var e = from emp in context.Emprunts
                     join adh in context.Adherents
-                    on emp.Id equals adh.Id
+                    on emp.AdherentId equals adh.Id
                     where emp.EtatRetour == true && adh.Id == idAdherent
                     select emp;
             return e.ToHashSet();

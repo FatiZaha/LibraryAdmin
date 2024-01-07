@@ -25,7 +25,7 @@
                                 <Label Content="{Binding Genre}" Height="38" Canvas.Left="310" Canvas.Top="63" Width="133" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                                 <Label Content="Genre" Height="43" Canvas.Left="193" Canvas.Top="62" Width="64" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-                                <Button x:Name="editBtn" Tag="{Binding Id}" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center" Width="44" Click="Add_Book" Canvas.Left="1338" Canvas.Top="9" Cursor="Hand" Background="Black" BorderBrush="{x:Null}">
+                                <Button x:Name="editBtn" Tag="{Binding Id}" Click="Edit_Book" HorizontalAlignment="Left" Height="50" VerticalAlignment="Center" Width="44" Canvas.Left="1338" Canvas.Top="9" Cursor="Hand" Background="Black" BorderBrush="{x:Null}">
                                     <Button.OpacityMask>
                                         <ImageBrush ImageSource="/images/edit.png" Stretch="UniformToFill"/>
                                     </Button.OpacityMask>
@@ -54,7 +54,7 @@
                 <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <Button x:Name="AddBookBtn" HorizontalAlignment="Left" Height="64" Margin="1363,10,0,0" VerticalAlignment="Top" Width="60" Click="Button_Click_1" Background="Black" BorderBrush="{x:Null}">
+        <Button x:Name="AddBookBtn" HorizontalAlignment="Left" Height="64" Margin="1363,10,0,0" VerticalAlignment="Top" Width="60" Click="Add_Book" Background="Black" BorderBrush="{x:Null}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/images/add_book.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>

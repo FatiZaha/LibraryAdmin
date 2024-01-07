@@ -38,9 +38,9 @@ namespace LibraryAdmin.LCollections
             return context.Adherents.Any(a => a.Connexion(login, password));
         }
 
-        public HashSet<Adherent> RechercheAdherents(string name)
+        public HashSet<Adherent> RechercheAdherents(string search)
         {
-            var adherents = context.Adherents.Where(a => a.Prenom == name || a.Nom == name).ToHashSet();
+            var adherents = context.Adherents.Where(a => a.Prenom.ToLower().Contains(search.ToLower()) || a.Nom.ToLower().Contains(search.ToLower())).ToHashSet();
             return adherents;
         }
 

@@ -19,57 +19,66 @@
                 <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <Label Content="Nom &amp; Prénom" HorizontalAlignment="Left" Margin="82,128,0,0" VerticalAlignment="Top" Height="42" Width="185" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Nom &amp; Prénom" HorizontalAlignment="Left" Margin="300,128,0,0" VerticalAlignment="Top" Height="42" Width="638" FontSize="16"/>
+        <Label Content="Nom et Prénom" HorizontalAlignment="Left" Margin="82,128,0,0" VerticalAlignment="Top" Height="42" Width="185" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="nomComplet" Content="Nom &amp; Prénom" HorizontalAlignment="Left" Margin="300,128,0,0" VerticalAlignment="Top" Height="42" Width="638" FontSize="16"/>
         <Label Content="E-mail" HorizontalAlignment="Left" Margin="82,163,0,0" VerticalAlignment="Top" Height="41" Width="92" FontSize="16" FontWeight="Bold"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="300,165,0,0" VerticalAlignment="Top" Height="42" Width="638" FontSize="16"/>
+        <Label x:Name="email" Content="E-mail" HorizontalAlignment="Left" Margin="300,165,0,0" VerticalAlignment="Top" Height="42" Width="638" FontSize="16"/>
         <Label Content="Adresse" HorizontalAlignment="Left" Margin="82,199,0,0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Adresse" HorizontalAlignment="Left" Margin="300,201,0,0" VerticalAlignment="Top" Height="42" Width="1128" FontSize="16"/>
+        <Label x:Name="adresse" Content="Adresse" HorizontalAlignment="Left" Margin="300,201,0,0" VerticalAlignment="Top" Height="42" Width="1128" FontSize="16"/>
         <Label Content="Téléphone" HorizontalAlignment="Left" Margin="82,238,0,0" VerticalAlignment="Top" Height="42" Width="122" FontSize="16" FontWeight="Bold"/>
-        <Label Content="Téléphone" HorizontalAlignment="Left" Margin="300,240,0,0" VerticalAlignment="Top" Height="42" Width="638" FontSize="16"/>
+        <Label x:Name="phone" Content="Téléphone" HorizontalAlignment="Left" Margin="300,240,0,0" VerticalAlignment="Top" Height="42" Width="638" FontSize="16"/>
         <TabControl HorizontalAlignment="Center" Height="503" Margin="0,287,0,0" VerticalAlignment="Top" Width="1530" FontSize="16">
             <TabItem Header="Emprunt">
                 <Grid Background="#FF5DCEAD">
-                    <Canvas HorizontalAlignment="Center" Height="97" Margin="0,10,0,0" VerticalAlignment="Top" Width="1504" Background="#FFFEFEFE">
-                        <Label Content="Titre" Height="38" Canvas.Left="10" Canvas.Top="30" Width="645"/>
-                        <Label Content="De" Height="32" Canvas.Left="686" Canvas.Top="14" Width="31" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="À" Height="28" Canvas.Left="686" Canvas.Top="50" Width="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="Label" Height="32" Canvas.Left="731" Canvas.Top="14" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label Content="Label" Height="32" Canvas.Left="731" Canvas.Top="50" Width="144" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="Montant" Height="32" Canvas.Left="909" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label Content="Montant" Height="32" Canvas.Left="995" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Button Height="69" Canvas.Left="1399" Canvas.Top="14" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}">
-                            <Button.Background>
-                                <ImageBrush Stretch="Uniform">
-                                    <ImageBrush.ImageSource>
-                                        <BitmapImage CacheOption="OnLoad" CreateOptions="IgnoreImageCache" UriSource="file:///C:/Users/ZAHA Fatima Zahra/AppData/Local/Microsoft/VisualStudio/17.0_8ef0026a/Designer/Cache/1-388408590x86DD/images/check_icon.png"/>
-                                    </ImageBrush.ImageSource>
-                                </ImageBrush>
-                            </Button.Background>
-                            <Button.OpacityMask>
-                                <ImageBrush ImageSource="/images/check_icon.png" Stretch="Uniform"/>
-                            </Button.OpacityMask>
-                        </Button>
-                    </Canvas>
+                    <ItemsControl ItemsSource="{Binding emprunts}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Canvas HorizontalAlignment="Center" Height="97" Margin="0,10,0,0" VerticalAlignment="Top" Width="1504" Background="#FFFEFEFE">
+                                    <Label Content="{Binding Livre.Titre}" Height="38" Canvas.Left="10" Canvas.Top="30" Width="645"/>
+                                    <Label Content="De" Height="32" Canvas.Left="686" Canvas.Top="14" Width="31" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="À" Height="28" Canvas.Left="686" Canvas.Top="50" Width="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding Date_empr}" Height="32" Canvas.Left="731" Canvas.Top="14" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding Date_retour}" Height="32" Canvas.Left="731" Canvas.Top="50" Width="144" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="Montant" Height="32" Canvas.Left="909" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding Montant}" Height="32" Canvas.Left="995" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Button Tag="{Binding Id}" Click="Retour_Livre" Height="69" Canvas.Left="1399" Canvas.Top="14" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Uniform">
+                                                <ImageBrush.ImageSource>/images/check_icon.png</ImageBrush.ImageSource>
+                                            </ImageBrush>
+                                        </Button.Background>
+                                        <Button.OpacityMask>
+                                            <ImageBrush ImageSource="/images/check_icon.png" Stretch="Uniform"/>
+                                        </Button.OpacityMask>
+                                    </Button>
+                                </Canvas>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </Grid>
             </TabItem>
             <TabItem Header="Retour">
                 <Grid Background="#FF5DCEAD">
-
-                    <Canvas HorizontalAlignment="Center" Height="97" Margin="0,10,0,0" VerticalAlignment="Top" Width="1504" Background="#FFFEFEFE">
-                        <Label Content="Titre" Height="38" Canvas.Left="10" Canvas.Top="30" Width="645"/>
-                        <Label Content="De" Height="32" Canvas.Left="686" Canvas.Top="14" Width="31" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="À" Height="28" Canvas.Left="686" Canvas.Top="50" Width="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="Label" Height="32" Canvas.Left="731" Canvas.Top="14" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label Content="Label" Height="32" Canvas.Left="731" Canvas.Top="50" Width="144" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="Montant" Height="32" Canvas.Left="909" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label Content="Montant" Height="32" Canvas.Left="995" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label Height="78" Canvas.Left="1395" Canvas.Top="10" Width="71" RenderTransformOrigin="0.523,0.264" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <Label.Background>
-                                <ImageBrush ImageSource="/images/return_book.png" Stretch="Uniform"/>
-                            </Label.Background>
-                        </Label>
-                    </Canvas>
+                    <ItemsControl ItemsSource="{Binding retours}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Canvas HorizontalAlignment="Center" Height="97" Margin="0,10,0,0" VerticalAlignment="Top" Width="1504" Background="#FFFEFEFE">
+                                    <Label Content="{Binding Livre.Titre}" Height="38" Canvas.Left="10" Canvas.Top="30" Width="645"/>
+                                    <Label Content="De" Height="32" Canvas.Left="686" Canvas.Top="14" Width="31" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="À" Height="28" Canvas.Left="686" Canvas.Top="50" Width="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding Date_empr}" Height="32" Canvas.Left="731" Canvas.Top="14" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding Date_retour}" Height="32" Canvas.Left="731" Canvas.Top="50" Width="144" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <Label Content="Montant" Height="32" Canvas.Left="909" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Label Content="{Binding Montant}" Height="32" Canvas.Left="995" Canvas.Top="34" Width="77" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Label Height="78" Canvas.Left="1395" Canvas.Top="10" Width="71" RenderTransformOrigin="0.523,0.264" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Label.Background>
+                                            <ImageBrush ImageSource="/images/return_book.png" Stretch="Uniform"/>
+                                        </Label.Background>
+                                    </Label>
+                                </Canvas>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </Grid>
 
             </TabItem>

@@ -61,16 +61,19 @@ namespace LibraryAdmin
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Add_Book(object sender, RoutedEventArgs e)
         {
             AddBook addBook = new AddBook();
             addBook.Show();
             this.Close();
         }
 
-        private void Add_Book(object sender, RoutedEventArgs e)
+        private void Edit_Book(object sender, RoutedEventArgs e)
         {
-            EditBook editBook = new EditBook();
+            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
+            int id = Convert.ToInt32(button.Tag);
+
+            EditBook editBook = new EditBook(id);
             editBook.Show();
             this.Close();
         }
@@ -109,7 +112,28 @@ namespace LibraryAdmin
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
+            int id = Convert.ToInt32(button.Tag);
 
+            LesLivres lesLivres = new LesLivres(context);
+            Livre lv=lesLivres.GetUnLivre(id);
+            lesLivres.Remove(id);
+            ILivres.Remove(lv);
+        }
+
+        private void OpenPopup_Click(object sender, RoutedEventArgs e)
+        {
+            myPopup.IsOpen = true;
+        }
+
+        private void Edit_Auteur(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
+            string buttonText = button.Content.ToString();
+
+            // Effectuez les actions souhaitées en fonction du bouton cliqué
+            MessageBox.Show($"Vous avez cliqué sur le bouton '{buttonText}'.");
+            myPopup.IsOpen = false;
         }
     }
 }

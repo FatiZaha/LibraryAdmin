@@ -61,7 +61,10 @@ namespace LibraryAdmin
 
         private void InfoAdherent_Clik(object sender, RoutedEventArgs e)
         {
-            var infoAdherent = new InfoAdherent();
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Tag);
+
+            var infoAdherent = new InfoAdherent(id);
             infoAdherent.Show();
             this.Close();
 
@@ -84,93 +87,79 @@ namespace LibraryAdmin
             }
         }
 
+
         private void SelectAllCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (selectAllCheckBox.IsChecked == true)
+            var checkBox = (CheckBox)sender;
+            int adherent;
+            if (checkBox.IsChecked == false)
             {
-                // Accéder au contenu du ScrollViewer
-                var itemsControl = scrollViewer.Content as ItemsControl;
-
-                // Vérifier si le contenu est bien un ItemsControl
-                if (itemsControl != null)
+                foreach (var item in dataTemplate.Items)
                 {
-                    // Parcourir tous les éléments du ItemsControl
-                    foreach (var item in itemsControl.Items)
+                    if (item is FrameworkElement frameworkElement)
                     {
-                        // Vérifier si l'élément est une ListBoxItem
-                        if (item is ListBoxItem listBoxItem)
+                        var adherentCheckBox = frameworkElement.FindName("adherentCheck") as CheckBox;
+                        if (adherentCheckBox != null)
                         {
-                            // Accéder au CheckBox à l'intérieur du ListBoxItem
-                            var checkBox = FindVisualChild<CheckBox>(listBoxItem);
+                            adherent = Convert.ToInt32(adherentCheckBox.Tag);
 
-                            // Cocher la case à cocher
-                            if (checkBox != null)
-                            {
-                                checkBox.IsChecked = true;
-
-                                var adherent = (Adherent)checkBox.DataContext;
-                                // Ajouter l'ID de l'adhérent à la liste
-                                checkedIds.Add(adherent.Id);
-                            }
+                            adherentCheckBox.IsChecked = true;
+                            checkedIds.Add(adherent);
                         }
                     }
                 }
             }
             else
             {
-                // Désélectionner toutes les cases à cocher et vider la liste des ID
-                checkedIds.Clear();
-
-                // Accéder au contenu du ScrollViewer
-                var itemsControl = scrollViewer.Content as ItemsControl;
-
-                // Vérifier si le contenu est bien un ItemsControl
-                if (itemsControl != null)
+                foreach (var item in dataTemplate.Items)
                 {
-                    // Parcourir tous les éléments du ItemsControl
-                    foreach (var item in itemsControl.Items)
+                    if (item is FrameworkElement frameworkElement)
                     {
-                        // Vérifier si l'élément est une ListBoxItem
-                        if (item is ListBoxItem listBoxItem)
+                        var adherentCheckBox = frameworkElement.FindName("adherentCheck") as CheckBox;
+                        if (adherentCheckBox != null)
                         {
-                            // Accéder au CheckBox à l'intérieur du ListBoxItem
-                            var checkBox = FindVisualChild<CheckBox>(listBoxItem);
+                            adherent = Convert.ToInt32(adherentCheckBox.Tag);
 
-                            // Désélectionner la case à cocher
-                            if (checkBox != null)
-                            {
-                                checkBox.IsChecked = false;
-                            }
+                            adherentCheckBox.IsChecked = false;
+                            checkedIds.Remove(adherent);
                         }
                     }
                 }
             }
         }
 
-
-        // Méthode auxiliaire pour trouver un élément visuel enfant de type T
-        private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            LesAdherents lesAdherents = new LesAdherents(context);
+            HashSet<Adherent> adherents;
+
+            TextBox textBox = (TextBox)sender;
+
+            if (textBox.Text != string.Empty)
             {
-                var child = VisualTreeHelper.GetChild(parent, i);
 
-                if (child is T result)
+                adherents = lesAdherents.RechercheAdherents(textBox.Text);
+
+                IAdherents.Clear();
+                foreach (Adherent adherent in adherents)
                 {
-                    return result;
+                    IAdherents.Add(adherent);
                 }
-                else
-                {
-                    var descendant = FindVisualChild<T>(child);
 
-                    if (descendant != null)
-                    {
-                        return descendant;
-                    }
+            }
+
+            else
+            {
+                adherents = lesAdherents.GetAdherents();
+                IAdherents.Clear();
+                foreach (Adherent adherent in adherents)
+                {
+                    IAdherents.Add(adherent);
                 }
             }
 
-            return null;
+            DataContext = this;
+
         }
     }
 }

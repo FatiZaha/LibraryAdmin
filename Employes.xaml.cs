@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace LibraryAdmin
 {
@@ -26,6 +27,7 @@ namespace LibraryAdmin
         LibraryContext context = new LibraryContext();
 
         public ObservableCollection<Employee> IEmployees { get; set; }
+        
 
         public Employes()
         {
@@ -67,7 +69,7 @@ namespace LibraryAdmin
         private void EditEmployeesBtn_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            int id = int.Parse((string)button.Tag);
+            int id = Convert.ToInt32(button.Tag);
             
             var editEmp=new EditEmployees(id);
             editEmp.Show();
@@ -77,11 +79,31 @@ namespace LibraryAdmin
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             LesEmployees lesEmployees = new LesEmployees(context);
-            HashSet<Employee> employees = lesEmployees.RechercheEmployees(sender.ToString());
-            IEmployees.Clear();
-            foreach (Employee employee in employees)
+            HashSet<Employee> employees;
+            
+            TextBox textBox = (TextBox)sender;
+
+            if (textBox.Text != string.Empty)
             {
-                IEmployees.Add(employee);
+
+                employees = lesEmployees.RechercheEmployees(textBox.Text);
+
+                IEmployees.Clear();
+                foreach (Employee employee in employees)
+                {
+                    IEmployees.Add(employee);
+                }
+
+            }
+
+            else
+            {
+                employees = lesEmployees.GetEmployees();
+                IEmployees.Clear();
+                foreach (Employee employee in employees)
+                {
+                    IEmployees.Add(employee);
+                }
             }
 
             DataContext = this;
@@ -92,5 +114,6 @@ namespace LibraryAdmin
         {
 
         }
+
     }
 }

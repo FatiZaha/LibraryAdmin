@@ -42,7 +42,9 @@ namespace LibraryAdmin.LCollections
 
         public HashSet<Employee> RechercheEmployees(string search)
         {
-            var employees = context.Employees.Where(emp => emp.Prenom.ToLower().Contains(search.ToLower())  || emp.Nom.ToLower().Contains(search.ToLower()) || emp.Status.ToString().ToLower().Contains(search.ToLower())).ToHashSet();
+            var employees = context.Employees.Where(emp => emp.Prenom.ToLower().Contains(search.ToLower()) ||
+                                                           emp.Nom.ToLower().Contains(search.ToLower()) ||
+                                                           emp.Status.ToString().ToLower().Contains(search.ToLower())).ToHashSet();
 
             return employees;
         }
