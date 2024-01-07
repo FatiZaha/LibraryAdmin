@@ -74,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditAuteur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddAuteur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +124,9 @@
     </Page>
     <Compile Include="Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditAuteur.xaml.cs">
+      <DependentUpon>EditAuteur.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddAuteur.xaml.cs">
       <DependentUpon>AddAuteur.xaml</DependentUpon>
@@ -293,9 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\estante-de-luxo-em-sala-de-estar-antiquada-gerada-por-ia.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="add_auteur.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\edit_auteur.png" />

@@ -15,25 +15,46 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryAdmin
 {
     /// <summary>
     /// Logique d'interaction pour AddAuteur.xaml
     /// </summary>
-    public partial class AddAuteur : Window
+    public partial class EditAuteur : System.Windows.Window
     {
+        int idAuteur;
+        Auteur auteur {  get; set; }
         LesAuteurs auteurs { get; set; }
         LibraryContext context = new LibraryContext();
 
-        public AddAuteur()
+        public EditAuteur(int id)
         {
             InitializeComponent();
             //WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
 
+            idAuteur = id;
             auteurs = new LesAuteurs(context);
+
+            auteur = auteurs.GetUnAuteur(idAuteur);
+            InfoAuteur();
+            DataContext = this;
+
         }
+
+        private void InfoAuteur()
+        {
+            nom.Text = auteur.Nom.ToString();
+            prenom.Text = auteur.Prenom.ToString();
+            dateDeces.Text= auteur.DateDeces.ToString();
+            dateNaissance.Text = auteur.DateNaissance.ToString();
+            FilePathLabel.Content= auteur.Image.ToString();
+            biographie.Text = auteur.Biographie.ToString();
+        }
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -58,10 +79,9 @@ namespace LibraryAdmin
         }
 
         
-        private void Ajouter_Auteur_1(object sender, RoutedEventArgs e)
+        private void Editer_Auteur(object sender, RoutedEventArgs e)
         {
             Exception ex = new Exception("Les insertions sont invalide ou champ vide !");
-            Exception ex2 = new Exception("L'auteur existe déjà !!");
             try
             {
                 if (nom.Text is null) throw ex;
@@ -70,19 +90,13 @@ namespace LibraryAdmin
                 if (prenom.Text is null) throw ex;
 
                 if (FilePathLabel.Content.ToString() == "Sélectionner un fichier") throw ex;
-
+                
 
                 if (biographie.Text is null) throw ex;
-                try
-                {
-                    bool test = auteurs.Ajouter_Auteur(nom.Text, prenom.Text, FilePathLabel.Content.ToString(), biographie.Text, (DateTime)dateNaissance.SelectedDate, (DateTime)dateDeces.SelectedDate);
-                    if (!test) throw ex2;
-                    this.Close();
-                }
-                catch 
-                {
-                    MessageBox.Show(ex2.Message);
-                }
+                
+                auteurs.EditerAuteur(idAuteur,nom.Text,prenom.Text,FilePathLabel.Content.ToString(),biographie.Text,(DateTime)dateNaissance.SelectedDate,(DateTime)dateDeces.SelectedDate);
+
+                this.Close();
             }
 
 
@@ -91,6 +105,19 @@ namespace LibraryAdmin
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void Delete_Auteur(object sender, RoutedEventArgs e)
+        {
+            auteurs.deleteAuteur(idAuteur);
+            this.Close();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
         }
     }
 }

@@ -35,5 +35,15 @@ namespace LibraryAdmin.Classes
             Biographie = biographie;
         }
 
+        public void Edit(string nom, string prenom, string image, DateTime dateNaissance, DateTime dateDeces, string biographie)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Image = image;
+            DateNaissance = dateNaissance;
+            DateDeces = dateDeces;
+            Biographie = biographie;
+        }
+
     }
 }

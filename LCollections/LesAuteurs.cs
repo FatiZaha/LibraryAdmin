@@ -30,6 +30,18 @@ namespace LibraryAdmin.LCollections
             return false;
         }
 
+        public void EditerAuteur(int id, string nom, string prenom, string image, string biographie, DateTime dateNaissance, DateTime dateDeces)
+        {
+            context.Auteurs.Where(a => a.Id == id).First().Edit(nom, prenom, image, dateNaissance, dateDeces, biographie);
+        }
+
+        public void deleteAuteur(int id)
+        {
+            Auteur auteur = context.Auteurs.FirstOrDefault(a => a.Id == id);
+            context.Auteurs.Remove(auteur);
+            context.SaveChanges();
+        }
+
         public HashSet<Auteur> GetAuteurs()
         {
             return context.Auteurs.ToHashSet();

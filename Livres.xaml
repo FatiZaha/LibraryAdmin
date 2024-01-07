@@ -71,7 +71,7 @@
                 <ItemsControl ItemsSource="{Binding auteurs}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                                <Button Content="{Binding Nom}"  Click="Edit_Auteur" FontSize="27" Background="#FFDAF4EC" Margin="5" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C"/>
+                                <Button Content="{Binding Nom}" Tag="{Binding Id}"  Click="Edit_Auteur" FontSize="27" Background="#FFDAF4EC" Margin="5" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

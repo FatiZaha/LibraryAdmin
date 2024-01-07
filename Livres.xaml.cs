@@ -134,11 +134,16 @@ namespace LibraryAdmin
         private void Edit_Auteur(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
-            string buttonText = button.Content.ToString();
+            int id = Convert.ToInt32(button.Tag);
+
+            EditAuteur editAuteur = new EditAuteur(id);
+            myPopup.IsOpen = false;
+
+            editAuteur.Show();
+
 
             // Effectuez les actions souhaitées en fonction du bouton cliqué
             
-            myPopup.IsOpen = false;
         }
 
         private void Close(object sender, RoutedEventArgs e)

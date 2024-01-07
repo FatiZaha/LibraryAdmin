@@ -167,7 +167,7 @@ namespace LibraryAdmin
         {
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Fichier CSV (*.csv)|*.csv|*.xls";
+            saveFileDialog.Filter = "Fichier CSV (*.csv)|*.csv";
             if (saveFileDialog.ShowDialog() == true)
             {
                 string filePath = saveFileDialog.FileName;
