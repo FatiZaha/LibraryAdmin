@@ -1,5 +1,7 @@
 ﻿using LibraryAdmin.Classes;
 using LibraryAdmin.DAO;
+using LibraryAdmin.LCollections;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,9 +33,35 @@ namespace LibraryAdmin
             InitializeComponent();
             WindowState = WindowState.Maximized;
             f = filePath;
-            // Lire le contenu du fichier CSV et l'afficher dans le contrôle ListBox
-            string[] lines = File.ReadAllLines(f);
-            listBox.ItemsSource = lines;
+            FileInfo file = new FileInfo(f);
+            ExcelPackage package = new ExcelPackage(file);
+
+            // Licence 
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            // Récupérer la première feuille du fichier Excel
+            ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+
+            // Lire les données de la feuille Excel et les stocker dans une liste de dictionnaires
+            List<object> excelData = new List<object>();
+
+            for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
+            {
+                object rowData = new
+                {
+                    Column1 = worksheet.Cells[row, 1].Value?.ToString() ?? string.Empty,
+                    Column2 = worksheet.Cells[row, 2].Value?.ToString() ?? string.Empty,
+                    Column3 = worksheet.Cells[row, 3].Value?.ToString() ?? string.Empty,
+                    Column4 = worksheet.Cells[row, 4].Value?.ToString() ?? string.Empty,
+                    Column5 = worksheet.Cells[row, 5].Value?.ToString() ?? string.Empty,
+                    Column6 = worksheet.Cells[row, 6].Value?.ToString() ?? string.Empty,
+                    Column7 = worksheet.Cells[row, 7].Value?.ToString() ?? string.Empty,
+                    Column8 = worksheet.Cells[row, 8].Value?.ToString() ?? string.Empty
+                };
+
+                excelData.Add(rowData);
+            }
+
+            dataGrid.ItemsSource = excelData;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -43,51 +71,52 @@ namespace LibraryAdmin
             this.Close();
         }
 
-        private void ImporterDataAdherents(object sender, RoutedEventArgs e)
+        private void ImportDataFromExcel(object sender, RoutedEventArgs e)
         {
-            try
+            List<Adherent> adherents = new List<Adherent>();
+
+            // Charger le fichier Excel à l'aide de EPPlus
+            FileInfo file = new FileInfo(f);
+            ExcelPackage package = new ExcelPackage(file);
+            // Licence 
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            // Récupérer la première feuille du fichier Excel
+            ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+
+            // Lire les données de la feuille Excel et les stocker dans la liste d'objets Adherent
+            for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
             {
-                // Lire les lignes du fichier CSV
-                string[] lines = File.ReadAllLines(f);
+                Adherent adherent = new Adherent();
 
-                // Parcourir chaque ligne à partir de la deuxième ligne (la première ligne contient l'en-tête)
-                for (int i = 1; i < lines.Length; i++)
+                adherent.Nom = worksheet.Cells[row, 1].Value?.ToString();
+                adherent.Prenom = worksheet.Cells[row, 2].Value?.ToString();
+                DateTime dateNaissance;
+                // Affecter d'autres propriétés selon votre modèle Adherent
+                if (DateTime.TryParse(worksheet.Cells[row, 3].Value?.ToString(), out dateNaissance))
                 {
-                    string line = lines[i];
-                    string[] values = line.Split(',');
-
-                    // Créer un nouvel objet Adherent et assigner les valeurs
-                    Adherent adherent = new Adherent
-                    {
-                        
-                        Nom = values[1],
-                        Prenom = values[2],
-                        Email = values[3],
-                        Adresse = values[4],
-                        DateNaissance = DateTime.Parse(values[5]),
-                        Phone = values[6],
-                        Login = values[7],
-                        Password = values[8]
-                    };
-
-                    // Ajouter l'adhérent à la base de données
-                    context.Adherents.Add(adherent);
+                    adherent.DateNaissance = dateNaissance;
+                }
+                else
+                {
+                    // Gérer le cas où la conversion échoue, par exemple en attribuant une valeur par défaut à adherent.DateNaissance
+                    adherent.DateNaissance = DateTime.MinValue;
                 }
 
-                // Sauvegarder les modifications dans la base de données
-                context.SaveChanges();
+                adherent.Email = worksheet.Cells[row, 4].Value?.ToString();
+                adherent.Adresse = worksheet.Cells[row, 5].Value?.ToString();
+                adherent.Phone = worksheet.Cells[row, 6].Value?.ToString();
+                adherent.Login = worksheet.Cells[row, 7].Value?.ToString();
+                adherent.Password = worksheet.Cells[row, 8].Value?.ToString();
 
-                MessageBox.Show("Importation réussie", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                Adherents adherents = new Adherents();
-                adherents.Show();
-                this.Close();
+                adherents.Add(adherent);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Une erreur s'est produite lors de l'importation : " + ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            
+            LesAdherents lesAdherents = new LesAdherents(context);
+            lesAdherents.ImporterData(adherents);
+            MessageBox.Show("Exportation réussie", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+            Adherents adh = new Adherents();
+            adh.Show();
+            this.Close();
         }
+
     }
 }

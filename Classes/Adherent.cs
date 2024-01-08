@@ -21,14 +21,13 @@ namespace LibraryAdmin.Classes
         public string Adresse { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Image { get; set; }
         public DateTime DateNaissance { get; set; }
         public string Password { get; set; }
         public string Login { get; set; }
 
         public Adherent() { }
 
-        public Adherent(string nom, string prenom, string adresse, string email, string phone, string image, DateTime dateNaissance, string login, string password)
+        public Adherent(string nom, string prenom, string adresse, string email, string phone, DateTime dateNaissance, string login, string password)
         {
             
             this.Nom = nom;
@@ -36,7 +35,6 @@ namespace LibraryAdmin.Classes
             this.Adresse = adresse;
             this.Email = email;
             this.Phone = phone;
-            this.Image = image;
             this.DateNaissance = dateNaissance;
             this.Login = login;
             this.Password = password;

@@ -29,7 +29,6 @@ namespace LibraryAdmin
         LesLivres LesLivres;
         HashSet<Livre> livres;
         LesEmprunts lesEmprunts;
-         public string img {  get; set; }
 
         int idAdherent;
         Adherent adherent;
@@ -59,7 +58,7 @@ namespace LibraryAdmin
             email.Content = adherent.Email;
             adresse.Content = adherent.Adresse;
             phone.Content = adherent.Phone;
-            img = adherent.Image;
+            
             
         }
 

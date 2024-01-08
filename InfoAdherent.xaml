@@ -83,6 +83,5 @@
 
             </TabItem>
         </TabControl>
-        <Image x:Name="image" Source="{Binding img}" HorizontalAlignment="Left" Height="189" Margin="1222,104,0,0" VerticalAlignment="Top" Width="206"/>
     </Grid>
 </Window>

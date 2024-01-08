@@ -15,9 +15,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using OfficeOpenXml;
 using Microsoft.Win32;
 using System.IO;
+using System.Data;
 
 namespace LibraryAdmin
 {
@@ -112,7 +113,7 @@ namespace LibraryAdmin
         private void Importer_CSV(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Fichier CSV (*.csv)|*.csv";
+            openFileDialog.Filter = "Fichiers Excel (*.xlsx, *.xls)|*.xlsx;*.xls";
             if (openFileDialog.ShowDialog() == true)
             {
                 string filePath = openFileDialog.FileName;
@@ -126,48 +127,82 @@ namespace LibraryAdmin
 
         private void ExporterAdherentsEnCSV(string filePath)
         {
-            // Récupérer les adhérents sélectionnés en fonction des IDs dans la liste checkedIds
-            List<Adherent> adherentsExport = IAdherents.ToList();
+            LesAdherents lesAdherents = new LesAdherents(context);
+            // Appeler votre méthode existante pour récupérer les données à exporter
+            IQueryable<Adherent> adherents = lesAdherents.ExportData();
 
-            using (StreamWriter writer = new StreamWriter(filePath))
+            // Convertir les données en une liste
+            List<Adherent> adherentsList = adherents.ToList();
+
+            // Créer un DataTable et définir les colonnes
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Nom");
+            dataTable.Columns.Add("Prenom");
+            dataTable.Columns.Add("DateNaissance");
+            dataTable.Columns.Add("Email");
+            dataTable.Columns.Add("Adresse");
+            dataTable.Columns.Add("Phone");
+            dataTable.Columns.Add("Login");
+            dataTable.Columns.Add("Password");
+            // Ajouter d'autres colonnes selon vos besoins
+
+            // Remplir le DataTable avec les données des adhérents
+            foreach (Adherent adherent in adherentsList)
             {
-                // Écrire l'en-tête du fichier CSV
+                // Créer une nouvelle ligne dans le DataTable
+                DataRow row = dataTable.NewRow();
+
+                // Remplir les valeurs des colonnes pour chaque adhérent
+                row["Nom"] = adherent.Nom;
+                row["Prenom"] = adherent.Prenom;
+                row["DateNaissance"] = adherent.DateNaissance;
+                row["Email"] = adherent.Email;
+                row["Adresse"] = adherent.Adresse;
+                row["Phone"] = adherent.Phone;
+                row["Login"] = adherent.Login;
+                row["Password"] = adherent.Password;
                 
+                // Affecter les autres valeurs de colonnes selon votre modèle Adherent
 
-                writer.WriteLine("\"Id\",\"Nom\",\"Prenom\",\"Email\",\"Adresse\",\"DateNaissance\",\"Phone\",\"Login\",\"Password\""); // Ajoutez les autres colonnes nécessaires
+                // Ajouter la ligne au DataTable
+                dataTable.Rows.Add(row);
+            }
 
-                // Écrire les données des adhérents
-                foreach (Adherent adherent in adherentsExport)
+            // Créer un nouveau fichier Excel avec EPPlus
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage excelPackage = new ExcelPackage();
+            ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+            // Écrire les en-têtes de colonnes dans le fichier Excel
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i + 1].Value = dataTable.Columns[i].ColumnName;
+            }
+
+            // Écrire les données dans le fichier Excel
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataTable.Columns.Count; j++)
                 {
-                    writer.Write($"\"{adherent.Id}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Nom}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Prenom}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Email}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Adresse}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.DateNaissance}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Phone}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Login}\"");
-                    writer.Write(",");
-                    writer.Write($"\"{adherent.Password}\"");
-                    writer.WriteLine(); // Nouvelle ligne pour chaque adhérent
+                    worksheet.Cells[i + 2, j + 1].Value = dataTable.Rows[i][j];
                 }
             }
 
+            // Enregistrer le fichier Excel dans le chemin spécifié
+            FileInfo excelFile = new FileInfo(filePath);
+            excelPackage.SaveAs(excelFile);
+
             MessageBox.Show("Exportation réussie", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+       
+        
 
         private void Exporter_CSV(object sender, RoutedEventArgs e)
         {
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Fichier CSV (*.csv)|*.csv";
+            saveFileDialog.Filter = "Fichiers Excel (*.xlsx, *.xls)|*.xlsx;*.xls";
             if (saveFileDialog.ShowDialog() == true)
             {
                 string filePath = saveFileDialog.FileName;

@@ -17,12 +17,12 @@ namespace LibraryAdmin.LCollections
             this.context = context;
         }
 
-        public bool Inscription(string nom, string prenom, string adresse, string email, string phone, string image, DateTime dateNaissance, string login, string password)
+        public bool Inscription(string nom, string prenom, string adresse, string email, string phone, DateTime dateNaissance, string login, string password)
         {
             var exist = context.Adherents.Any(a => a.Login == login || a.Email == email);
             if (!exist)
             {
-                Adherent adherent = new Adherent(nom, prenom, adresse, email, phone, image, dateNaissance, login, password);
+                Adherent adherent = new Adherent(nom, prenom, adresse, email, phone, dateNaissance, login, password);
                 context.Adherents.Add(adherent);
                 context.SaveChanges();
                 return true;
@@ -53,6 +53,24 @@ namespace LibraryAdmin.LCollections
         {
             Adherent adherent = context.Adherents.FirstOrDefault(adh => adh.Id == id);
             return adherent;
+        }
+
+        public IQueryable<Adherent> ExportData()
+        {
+            var data = from adh in context.Adherents
+                       select adh;
+
+            return data;
+
+        }
+
+        public void ImporterData(List<Adherent> adherents)
+        {
+            foreach (var adh in adherents)
+            {
+                if(!context.Adherents.Any(a=>a.Login == adh.Login && a.Password == adh.Password)) context.Adherents.Add(adh);
+            }
+            context.SaveChanges();
         }
     }
 }

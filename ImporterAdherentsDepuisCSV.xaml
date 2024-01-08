@@ -19,12 +19,23 @@
                 <ImageBrush ImageSource="/images/back_icon.png" Stretch="UniformToFill"/>
             </Button.OpacityMask>
         </Button>
-        <Button Content="Importer" HorizontalAlignment="Left" Height="49" Margin="1199,708,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="ImporterDataAdherents">
+        <Button Content="Importer" HorizontalAlignment="Left" Height="49" Margin="1199,708,0,0" VerticalAlignment="Top" Width="223" FontSize="27" Background="#FFDAF4EC" OpacityMask="Black" FontWeight="Medium" ClipToBounds="True" Cursor="Hand" BorderBrush="#FF39484C" Foreground="#FF39484C" Click="ImportDataFromExcel">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="521" Margin="110,136,0,0" VerticalAlignment="Top" Width="1312" d:ItemsSource="{d:SampleData ItemCount=5}" FontSize="20"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="514" Margin="0,168,0,0" VerticalAlignment="Top" Width="1294" AutoGenerateColumns="False" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Column1}" />
+                <DataGridTextColumn Header="Prenom" Binding="{Binding Column2}" />
+                <DataGridTextColumn Header="DateNaissance" Binding="{Binding Column3}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Column4}" />
+                <DataGridTextColumn Header="Adresse" Binding="{Binding Column5}" />
+                <DataGridTextColumn Header="Phone" Binding="{Binding Column6}" />
+                <DataGridTextColumn Header="Login" Binding="{Binding Column7}" />
+                <DataGridTextColumn Header="Password" Binding="{Binding Column8}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
