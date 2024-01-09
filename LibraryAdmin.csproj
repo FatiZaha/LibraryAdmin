@@ -227,6 +227,14 @@
     <Compile Include="Migrations\202401081005449_initialcreate5.designer.cs">
       <DependentUpon>202401081005449_initialcreate5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401091915018_mgr4.cs" />
+    <Compile Include="Migrations\202401091915018_mgr4.designer.cs">
+      <DependentUpon>202401091915018_mgr4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401091938392_mgr3.cs" />
+    <Compile Include="Migrations\202401091938392_mgr3.designer.cs">
+      <DependentUpon>202401091938392_mgr3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -258,6 +266,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202401081005449_initialcreate5.resx">
       <DependentUpon>202401081005449_initialcreate5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401091915018_mgr4.resx">
+      <DependentUpon>202401091915018_mgr4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401091938392_mgr3.resx">
+      <DependentUpon>202401091938392_mgr3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

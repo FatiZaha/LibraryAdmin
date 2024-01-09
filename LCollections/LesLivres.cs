@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LibraryAdmin.LCollections
 {
@@ -22,7 +23,11 @@ namespace LibraryAdmin.LCollections
             var exist = context.Livres.Any(l => l.Titre == titre && l.AuteurId == auteur.Id);
             if (!exist)
             {
-                Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl,0,image, prix);
+                string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\livre\\" + titre + ".png";
+                File.Copy(image, nouveauChemin);
+                string imageWeb = "~/css/pics/livre/" + titre + ".png";
+
+                Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl,0,image,imageWeb, prix);
                 context.Livres.Add(livre);
                 context.SaveChanges();
                 return true;
@@ -32,8 +37,11 @@ namespace LibraryAdmin.LCollections
 
         public void Editer_lv(int id,string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
         {
+            string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\" + titre + ".png";
+            File.Copy(image, nouveauChemin);
+            string imageWeb = "~/css/pics/" + titre + ".png";
 
-            context.Livres.Where(l=> l.Id == id ).First().Editer_livre(titre,auteur, genre, dateParution, description,nbrExempl,nbrEmpr,image, prix);
+            context.Livres.Where(l=> l.Id == id ).First().Editer_livre(titre,auteur, genre, dateParution, description,nbrExempl,nbrEmpr,image,imageWeb, prix);
             context.SaveChanges();
 
         }

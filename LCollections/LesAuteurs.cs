@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LibraryAdmin.LCollections
 {
@@ -22,7 +23,11 @@ namespace LibraryAdmin.LCollections
             var exist = context.Auteurs.Any(a => a.Nom == nom && a.Prenom == prenom);
             if (!exist)
             {
-                Auteur auteur = new Auteur(nom, prenom, image, dateNaissance, dateDeces, biographie);
+                string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\auteur\\"+nom+"_"+prenom+".png";
+                File.Copy(image, nouveauChemin);
+                string imageWeb= "~/css/pics/auteur/"+nom+"_"+prenom+".png";
+
+                Auteur auteur = new Auteur(nom, prenom,imageWeb, image, dateNaissance, dateDeces, biographie);
                 context.Auteurs.Add(auteur);
                 context.SaveChanges();
                 return true;
@@ -32,7 +37,12 @@ namespace LibraryAdmin.LCollections
 
         public void EditerAuteur(int id, string nom, string prenom, string image, string biographie, DateTime dateNaissance, DateTime dateDeces)
         {
-            context.Auteurs.Where(a => a.Id == id).First().Edit(nom, prenom, image, dateNaissance, dateDeces, biographie);
+            string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\" + nom + "_" + prenom + ".png";
+            File.Copy(image, nouveauChemin);
+            string imageWeb = "~/css/pics/" + nom + "_" + prenom + ".png";
+
+            context.Auteurs.Where(a => a.Id == id).First().Edit(nom, prenom, imageWeb, image, dateNaissance, dateDeces, biographie);
+            context.SaveChanges();
         }
 
         public void deleteAuteur(int id)

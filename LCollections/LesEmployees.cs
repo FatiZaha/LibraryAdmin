@@ -23,6 +23,8 @@ namespace LibraryAdmin.LCollections
             var exist = context.Employees.Any(emp => emp.DateNaissance == dateNaissance && emp.Prenom == prenom && emp.Nom == nom);
             if (!exist)
             {
+
+
                 Employee employee = new Employee(nom, prenom,status, adresse, email, phone, image, dateNaissance);
                 context.Employees.Add(employee);
                 context.SaveChanges();

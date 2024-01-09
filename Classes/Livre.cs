@@ -21,6 +21,7 @@ namespace LibraryAdmin.Classes
         public int NbrExempl { get; set; }
         public int NbrEmpr { get; set; }
         public string Image { get; set; }
+        public string ImageWeb { get; set; }
         public float Prix { get; set; }
 
         
@@ -34,7 +35,7 @@ namespace LibraryAdmin.Classes
 
         public Livre() { }
 
-        public Livre(string titre,Auteur auteur,Genre genre, DateTime dateParution, string description, int nbrExempl,int n,string image, float prix)
+        public Livre(string titre,Auteur auteur,Genre genre, DateTime dateParution, string description, int nbrExempl,int n,string image,string imageWeb, float prix)
         {
             
             this.Titre = titre;
@@ -45,10 +46,11 @@ namespace LibraryAdmin.Classes
             this.NbrExempl = nbrExempl;
             this.NbrEmpr = n;
             this.Image = image;
+            this.ImageWeb = imageWeb;
             this.Prix = prix;
         }
 
-        public void Editer_livre(string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
+        public void Editer_livre(string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image,string imageWeb, float prix)
         {
             this.Titre = titre;
             this.Auteur = auteur;
@@ -58,6 +60,7 @@ namespace LibraryAdmin.Classes
             this.NbrExempl = nbrExempl;
             this.NbrEmpr = nbrEmpr;
             this.Image = image;
+            this.ImageWeb = imageWeb;
             this.Prix = prix;
 
 
