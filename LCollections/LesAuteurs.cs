@@ -25,7 +25,7 @@ namespace LibraryAdmin.LCollections
             {
                 string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\auteur\\"+nom+"_"+prenom+".png";
                 File.Copy(image, nouveauChemin);
-                string imageWeb= "~/css/pics/auteur/"+nom+"_"+prenom+".png";
+                string imageWeb= "/css/pics/auteur/"+nom+"_"+prenom+".png";
 
                 Auteur auteur = new Auteur(nom, prenom,imageWeb, image, dateNaissance, dateDeces, biographie);
                 context.Auteurs.Add(auteur);
@@ -37,9 +37,9 @@ namespace LibraryAdmin.LCollections
 
         public void EditerAuteur(int id, string nom, string prenom, string image, string biographie, DateTime dateNaissance, DateTime dateDeces)
         {
-            string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\" + nom + "_" + prenom + ".png";
+            string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\auteur\\" + nom + "_" + prenom + ".png";
             File.Copy(image, nouveauChemin);
-            string imageWeb = "~/css/pics/" + nom + "_" + prenom + ".png";
+            string imageWeb = "/css/pics/auteur/" + nom + "_" + prenom + ".png";
 
             context.Auteurs.Where(a => a.Id == id).First().Edit(nom, prenom, imageWeb, image, dateNaissance, dateDeces, biographie);
             context.SaveChanges();

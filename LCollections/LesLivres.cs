@@ -25,7 +25,7 @@ namespace LibraryAdmin.LCollections
             {
                 string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\livre\\" + titre + ".png";
                 File.Copy(image, nouveauChemin);
-                string imageWeb = "~/css/pics/livre/" + titre + ".png";
+                string imageWeb = "/css/pics/livre/" + titre + ".png";
 
                 Livre livre = new Livre(titre, auteur, genre, dateParution, description, nbrExempl,0,image,imageWeb, prix);
                 context.Livres.Add(livre);
@@ -37,9 +37,9 @@ namespace LibraryAdmin.LCollections
 
         public void Editer_lv(int id,string titre, Auteur auteur, Genre genre, DateTime dateParution, string description, int nbrExempl, int nbrEmpr, string image, float prix)
         {
-            string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\" + titre + ".png";
+            string nouveauChemin = "C:\\Users\\ZAHA Fatima Zahra\\Desktop\\LibraryClient\\wwwroot\\css\\pics\\livre\\" + titre + ".png";
             File.Copy(image, nouveauChemin);
-            string imageWeb = "~/css/pics/" + titre + ".png";
+            string imageWeb = "/css/pics/livre/" + titre + ".png";
 
             context.Livres.Where(l=> l.Id == id ).First().Editer_livre(titre,auteur, genre, dateParution, description,nbrExempl,nbrEmpr,image,imageWeb, prix);
             context.SaveChanges();
