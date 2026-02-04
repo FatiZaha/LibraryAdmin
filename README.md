@@ -1,5 +1,6 @@
 
-# LibraryAdmin 📚
+# Network Bookclub 📚
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/ce246511-285d-4a9d-b021-cb6cbf62160c" />
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
@@ -7,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 </p>
 
-**LibraryAdmin** is a powerful desktop-based management system designed to automate library operations. Built on the **.NET framework**, it provides a seamless interface for managing book inventories, member registrations, and tracking the complete lifecycle of book loans and returns with a **Microsoft SQL Server** backend.
+**Network Bookclub** is a powerful desktop-based management system designed to automate library operations. Built on the **.NET framework**, it provides a seamless interface for managing book inventories, member registrations, and tracking the complete lifecycle of book loans and returns with a **Microsoft SQL Server** backend.
 
 ---
 
